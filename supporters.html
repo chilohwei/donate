@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="View all supporters who have contributed to Chiloh's creative journey. Join the community!">
+    <meta name="keywords" content="supporters, donors, community, thank you, appreciation">
+    <meta name="author" content="Chiloh">
+    <meta property="og:title" content="Supporters Wall | Chiloh">
+    <meta property="og:description" content="Meet the amazing people who support Chiloh's work.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Supporters Wall | Chiloh">
+    <meta name="twitter:description" content="Meet the amazing people who support Chiloh's work.">
+    <title>Supporters Wall | Chiloh</title>
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css?v=4">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💝</text></svg>">
+</head>
+<body>
+
+    <!-- 动态背景 -->
+    <div class="bg-decoration">
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <div class="bg-glow glow-3"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <a href="index.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span data-i18n="backHome">Back</span>
+    </a>
+
+    <!-- 主题切换 -->
+    <button type="button" class="theme-toggle-fixed" id="themeToggle">
+        <i class="fa-solid fa-sun"></i>
+    </button>
+
+    <!-- 主内容 -->
+    <main class="supporters-page">
+        
+        <header class="page-header">
+            <h1 class="page-title" data-i18n="supportersTitle">Supporters Wall</h1>
+            <p class="page-note" data-i18n="supportersNote">Unranked · Updated every Friday</p>
+            <div class="supporter-count" id="supporterCount">
+                <i class="fa-solid fa-users"></i>
+                <span>0</span>
+            </div>
+        </header>
+
+        <!-- 支持者网格 -->
+        <section class="supporters-grid" id="supportersGrid">
+            <!-- 动态渲染 -->
+        </section>
+
+        <!-- 空状态 -->
+        <section class="empty-state" id="emptyState">
+            <div class="empty-visual">
+                <!-- 装饰圆环 -->
+                <div class="empty-ring ring-1"></div>
+                <div class="empty-ring ring-2"></div>
+                <div class="empty-ring ring-3"></div>
+                <!-- 中心图标 -->
+                <div class="empty-icon">
+                    <i class="fa-solid fa-user-group"></i>
+                </div>
+                <!-- 漂浮粒子 -->
+                <div class="empty-particle p1"></div>
+                <div class="empty-particle p2"></div>
+                <div class="empty-particle p3"></div>
+                <div class="empty-particle p4"></div>
+                <div class="empty-particle p5"></div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="page-cta" id="pageCta">
+            <a href="index.html" class="cta-btn">
+                <i class="fa-solid fa-gift"></i>
+                <span data-i18n="beSupporter">Become a Supporter</span>
+            </a>
+        </section>
+
+        <!-- 款项用途说明 -->
+        <section class="funds-usage">
+            <h2 class="funds-title" data-i18n="fundsTitle">Where Your Support Goes</h2>
+            <div class="funds-grid">
+                <div class="fund-item">
+                    <div class="fund-icon">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div class="fund-content">
+                        <h3 data-i18n="fundServer">Server & Hosting</h3>
+                        <p data-i18n="fundServerDesc">Keep the blog and projects running 24/7</p>
+                    </div>
+                </div>
+                <div class="fund-item">
+                    <div class="fund-icon">
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+                    <div class="fund-content">
+                        <h3 data-i18n="fundResearch">Research & Tools</h3>
+                        <p data-i18n="fundResearchDesc">APIs, software, and learning resources</p>
+                    </div>
+                </div>
+                <div class="fund-item">
+                    <div class="fund-icon">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <div class="fund-content">
+                        <h3 data-i18n="fundContent">Content Creation</h3>
+                        <p data-i18n="fundContentDesc">More tutorials, articles, and open source</p>
+                    </div>
+                </div>
+                <div class="fund-item">
+                    <div class="fund-icon">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <div class="fund-content">
+                        <h3 data-i18n="fundCoffee">Coffee & Energy</h3>
+                        <p data-i18n="fundCoffeeDesc">Fuel for late-night coding sessions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/config.js?v=4"></script>
+    <script src="js/app.js?v=4"></script>
+</body>
+</html>

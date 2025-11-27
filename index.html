@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Support Chiloh's creative work. Donate via WeChat, Alipay, or Crypto (BTC, ETH, SOL, USDT).">
+    <meta name="keywords" content="donate, support, sponsor, creator, WeChat, Alipay, Bitcoin, Ethereum, crypto donation">
+    <meta name="author" content="Chiloh">
+    <meta property="og:title" content="Support Chiloh | Buy Me a Coffee ☕">
+    <meta property="og:description" content="Support my creative work with a donation. Every contribution helps fuel my journey.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Support Chiloh | Buy Me a Coffee ☕">
+    <meta name="twitter:description" content="Support my creative work with a donation.">
+    <title>Support Chiloh | Buy Me a Coffee ☕</title>
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💝</text></svg>">
+</head>
+<body>
+
+    <!-- 动态背景 -->
+    <div class="bg-decoration">
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <div class="bg-glow glow-3"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <!-- 主题切换 -->
+    <button type="button" class="theme-toggle-fixed" id="themeToggle">
+        <i class="fa-solid fa-sun"></i>
+    </button>
+
+    <!-- 主布局 -->
+    <main class="layout">
+        
+        <!-- 左侧：感谢语 -->
+        <section class="left-panel">
+            <div class="left-content">
+                <p class="hero-greeting" data-i18n="greeting">Hi, friend</p>
+                <h1 class="hero-title" data-i18n="headline">Thank You for Your Support</h1>
+                <p class="hero-desc" data-i18n="message">Every bit of kindness fuels my journey.<br>Your support makes creation meaningful.</p>
+                
+                <!-- 社交链接 (由 config.js 配置) -->
+                <div class="social-links" id="socialLinks">
+                    <!-- Dynamic content from config.js -->
+                </div>
+
+                <a href="supporters.html" target="_blank" class="cta-btn">
+                    <i class="fa-solid fa-gift"></i>
+                    <span data-i18n="viewSupporters">View Supporters</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 右侧：支付 (加宽) -->
+        <section class="right-panel">
+            <div class="payment-card">
+                <!-- Tab -->
+                <div class="pay-tabs">
+                    <button class="pay-tab active" data-id="wechat">
+                        <i class="fa-brands fa-weixin"></i>
+                        <span data-i18n="wechat">WeChat</span>
+                    </button>
+                    <button class="pay-tab" data-id="alipay">
+                        <i class="fa-brands fa-alipay"></i>
+                        <span data-i18n="alipay">Alipay</span>
+                    </button>
+                    <button class="pay-tab" data-id="crypto">
+                        <i class="fa-brands fa-bitcoin"></i>
+                        <span>Crypto</span>
+                    </button>
+                </div>
+                
+                <!-- 支付内容区 -->
+                <div class="pay-content">
+                    <!-- QR -->
+                    <div class="qr-stage" id="qrStage">
+                        <div class="qr-frame">
+                            <img src="https://chilohdata.s3.bitiful.net/wechat.png" alt="QR Code" id="qrImage" loading="lazy">
+                        </div>
+                        <p class="qr-hint" id="qrHint" data-i18n="scanWechat">Scan with WeChat</p>
+                    </div>
+
+                    <!-- Crypto (由 config.js 配置) -->
+                    <div class="crypto-stage" id="cryptoStage">
+                        <!-- Dynamic content from config.js -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/config.js?v=3"></script>
+    <script src="js/app.js?v=3"></script>
+</body>
+</html>
