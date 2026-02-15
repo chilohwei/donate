@@ -351,17 +351,24 @@
         icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
     }
 
-    // Language
+    // Language - detect from navigator.languages (full preference list)
     function detectLanguage() {
         const saved = localStorage.getItem('donate_lang');
         if (saved && CONFIG.supportedLangs.includes(saved)) return saved;
-        
-        const browserLang = navigator.language;
-        if (browserLang.startsWith('zh')) {
-            return browserLang.includes('TW') || browserLang.includes('HK') ? 'zh-TW' : 'zh-CN';
-        }
-        for (const lang of CONFIG.supportedLangs) {
-            if (browserLang.startsWith(lang.split('-')[0])) return lang;
+
+        // navigator.languages returns all user-preferred languages in order
+        // e.g. ['zh-TW', 'zh', 'en-US', 'en', 'ja']
+        const candidates = navigator.languages || [navigator.language];
+
+        for (const lang of candidates) {
+            // Chinese: distinguish zh-TW/zh-HK (Traditional) vs zh-CN/zh (Simplified)
+            if (lang.startsWith('zh')) {
+                return /TW|HK|Hant/i.test(lang) ? 'zh-TW' : 'zh-CN';
+            }
+            // Exact match first (e.g. 'ja' matches 'ja', 'ko' matches 'ko')
+            const prefix = lang.split('-')[0];
+            const match = CONFIG.supportedLangs.find(s => s === lang || s.split('-')[0] === prefix);
+            if (match) return match;
         }
         return CONFIG.defaultLang;
     }
