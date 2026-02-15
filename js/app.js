@@ -39,8 +39,8 @@
             headline: 'Thank You for Your Support',
             message: 'Every bit of kindness fuels my journey.<br>Your support makes creation meaningful.',
             viewSupporters: 'View Supporters',
-            wechat: 'WeChat', alipay: 'Alipay',
-            scanWechat: 'Scan with WeChat', scanAlipay: 'Scan with Alipay',
+            wechat: 'WeChat', alipay: 'Alipay', paypal: 'PayPal',
+            scanWechat: 'Scan with WeChat', scanAlipay: 'Scan with Alipay', scanPaypal: 'Scan with PayPal',
             doneDonate: 'I have donated',
             copy: 'Copy', copied: 'Copied!',
             leaveMarkDesc: 'Leave your mark',
@@ -66,8 +66,8 @@
             headline: '感谢你的支持',
             message: '每一份心意，都是我前行的动力。<br>你的支持让创作更有意义。',
             viewSupporters: '查看支持者',
-            wechat: '微信', alipay: '支付宝',
-            scanWechat: '打开微信扫一扫', scanAlipay: '打开支付宝扫一扫',
+            wechat: '微信', alipay: '支付宝', paypal: 'PayPal',
+            scanWechat: '打开微信扫一扫', scanAlipay: '打开支付宝扫一扫', scanPaypal: '打开 PayPal 扫一扫',
             doneDonate: '我已赞赏',
             copy: '复制', copied: '已复制!',
             leaveMarkDesc: '留下你的印记',
@@ -93,8 +93,8 @@
             headline: '感謝你的支持',
             message: '每一份心意，都是我前行的動力。<br>你的支持讓創作更有意義。',
             viewSupporters: '查看支持者',
-            wechat: '微信', alipay: '支付寶',
-            scanWechat: '打開微信掃一掃', scanAlipay: '打開支付寶掃一掃',
+            wechat: '微信', alipay: '支付寶', paypal: 'PayPal',
+            scanWechat: '打開微信掃一掃', scanAlipay: '打開支付寶掃一掃', scanPaypal: '打開 PayPal 掃一掃',
             doneDonate: '我已贊賞',
             copy: '複製', copied: '已複製!',
             leaveMarkDesc: '留下你的印記',
@@ -120,8 +120,8 @@
             headline: 'ご支援ありがとうございます',
             message: 'すべての優しさが私の旅の糧となります。<br>あなたのサポートが創作に意味を与えます。',
             viewSupporters: 'サポーター一覧',
-            wechat: 'WeChat', alipay: 'Alipay',
-            scanWechat: 'WeChatでスキャン', scanAlipay: 'Alipayでスキャン',
+            wechat: 'WeChat', alipay: 'Alipay', paypal: 'PayPal',
+            scanWechat: 'WeChatでスキャン', scanAlipay: 'Alipayでスキャン', scanPaypal: 'PayPalでスキャン',
             doneDonate: '寄付しました',
             copy: 'コピー', copied: 'コピー済!',
             leaveMarkDesc: '足跡を残す',
@@ -147,8 +147,8 @@
             headline: '지원해 주셔서 감사합니다',
             message: '모든 친절함이 제 여정의 원동력이 됩니다.<br>당신의 지원이 창작에 의미를 부여합니다.',
             viewSupporters: '서포터 보기',
-            wechat: 'WeChat', alipay: 'Alipay',
-            scanWechat: 'WeChat으로 스캔', scanAlipay: 'Alipay로 스캔',
+            wechat: 'WeChat', alipay: 'Alipay', paypal: 'PayPal',
+            scanWechat: 'WeChat으로 스캔', scanAlipay: 'Alipay로 스캔', scanPaypal: 'PayPal로 스캔',
             doneDonate: '기부했습니다',
             copy: '복사', copied: '복사됨!',
             leaveMarkDesc: '흔적을 남기세요',
@@ -174,8 +174,8 @@
             headline: 'Merci pour votre soutien',
             message: 'Chaque geste de gentillesse alimente mon parcours.<br>Votre soutien donne un sens a la creation.',
             viewSupporters: 'Voir les supporters',
-            wechat: 'WeChat', alipay: 'Alipay',
-            scanWechat: 'Scanner avec WeChat', scanAlipay: 'Scanner avec Alipay',
+            wechat: 'WeChat', alipay: 'Alipay', paypal: 'PayPal',
+            scanWechat: 'Scanner avec WeChat', scanAlipay: 'Scanner avec Alipay', scanPaypal: 'Scanner avec PayPal',
             doneDonate: 'J\'ai fait un don',
             copy: 'Copier', copied: 'Copie!',
             leaveMarkDesc: 'Laissez votre marque',
@@ -201,8 +201,8 @@
             headline: 'Danke fur Ihre Unterstutzung',
             message: 'Jede Freundlichkeit treibt meine Reise an.<br>Ihre Unterstutzung gibt der Kreation Bedeutung.',
             viewSupporters: 'Unterstutzer anzeigen',
-            wechat: 'WeChat', alipay: 'Alipay',
-            scanWechat: 'Mit WeChat scannen', scanAlipay: 'Mit Alipay scannen',
+            wechat: 'WeChat', alipay: 'Alipay', paypal: 'PayPal',
+            scanWechat: 'Mit WeChat scannen', scanAlipay: 'Mit Alipay scannen', scanPaypal: 'Mit PayPal scannen',
             doneDonate: 'Ich habe gespendet',
             copy: 'Kopieren', copied: 'Kopiert!',
             leaveMarkDesc: 'Hinterlassen Sie Ihre Spur',
@@ -228,8 +228,8 @@
             headline: 'Gracias por tu apoyo',
             message: 'Cada gesto de amabilidad impulsa mi viaje.<br>Tu apoyo da significado a la creacion.',
             viewSupporters: 'Ver seguidores',
-            wechat: 'WeChat', alipay: 'Alipay',
-            scanWechat: 'Escanear con WeChat', scanAlipay: 'Escanear con Alipay',
+            wechat: 'WeChat', alipay: 'Alipay', paypal: 'PayPal',
+            scanWechat: 'Escanear con WeChat', scanAlipay: 'Escanear con Alipay', scanPaypal: 'Escanear con PayPal',
             doneDonate: 'He donado',
             copy: 'Copiar', copied: 'Copiado!',
             leaveMarkDesc: 'Deja tu huella',
@@ -255,8 +255,8 @@
             headline: 'Grazie per il tuo supporto',
             message: 'Ogni gesto di gentilezza alimenta il mio viaggio.<br>Il tuo supporto da significato alla creazione.',
             viewSupporters: 'Vedi sostenitori',
-            wechat: 'WeChat', alipay: 'Alipay',
-            scanWechat: 'Scansiona con WeChat', scanAlipay: 'Scansiona con Alipay',
+            wechat: 'WeChat', alipay: 'Alipay', paypal: 'PayPal',
+            scanWechat: 'Scansiona con WeChat', scanAlipay: 'Scansiona con Alipay', scanPaypal: 'Scansiona con PayPal',
             doneDonate: 'Ho donato',
             copy: 'Copia', copied: 'Copiato!',
             leaveMarkDesc: 'Lascia il tuo segno',
@@ -292,12 +292,6 @@
         return div.innerHTML;
     };
 
-    const formatDate = date => {
-        const d = new Date(date);
-        const pad = n => String(n).padStart(2, '0');
-        return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
-    };
-
     const getInitial = name => {
         if (!name) return 'A';
         const char = name.charAt(0);
@@ -306,70 +300,54 @@
 
     const getText = key => (I18N[currentLang] || I18N.en)[key] || key;
 
-    // Theme - Time-based auto switching
-    function isNightTime() {
-        const hour = new Date().getHours();
-        // Night time based on config (default: 18:00 - 06:00)
-        return hour >= CONFIG.nightStart || hour < CONFIG.nightEnd;
-    }
+    // Theme - Smart auto switching
+    // Priority: 1) User manual choice  2) System prefers-color-scheme  3) Time-based fallback
+    const darkMq = window.matchMedia('(prefers-color-scheme: dark)');
 
     function getAutoTheme() {
-        return isNightTime() ? 'dark' : 'light';
+        // System preference is supported and has a value
+        if (darkMq.media !== 'not all') return darkMq.matches ? 'dark' : 'light';
+        // Fallback: time-based (night = dark)
+        const h = new Date().getHours();
+        return (h >= CONFIG.nightStart || h < CONFIG.nightEnd) ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+        document.documentElement.dataset.theme = theme;
+        // Update meta theme-color for mobile browser chrome
+        let meta = document.querySelector('meta[name="theme-color"]');
+        if (!meta) { meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
+        meta.content = theme === 'dark' ? '#0a0a0a' : '#fefefe';
+        updateThemeIcon();
     }
 
     function initTheme() {
         const saved = localStorage.getItem(CONFIG.themeKey);
-        if (saved) {
-            // User has manually set a preference
-            document.documentElement.dataset.theme = saved;
-        } else {
-            // Auto theme based on time
-            document.documentElement.dataset.theme = getAutoTheme();
-        }
-        updateThemeIcon();
-        
-        // Schedule theme check every hour
-        scheduleThemeCheck();
-    }
+        applyTheme(saved || getAutoTheme());
 
-    function scheduleThemeCheck() {
-        // Check every hour if no manual preference is set
-        setInterval(() => {
-            if (!localStorage.getItem(CONFIG.themeKey)) {
-                const newTheme = getAutoTheme();
-                if (document.documentElement.dataset.theme !== newTheme) {
-                    document.documentElement.dataset.theme = newTheme;
-                    updateThemeIcon();
-                }
-            }
-        }, 60 * 60 * 1000); // Check every hour
+        // React to system preference changes in real-time (only when no manual choice)
+        darkMq.addEventListener('change', () => {
+            if (!localStorage.getItem(CONFIG.themeKey)) applyTheme(getAutoTheme());
+        });
     }
 
     function toggleTheme() {
         const current = document.documentElement.dataset.theme || getAutoTheme();
-        const newTheme = current === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.dataset.theme = newTheme;
-        localStorage.setItem(CONFIG.themeKey, newTheme);
-        updateThemeIcon();
-    }
-
-    function resetToAutoTheme() {
-        // Remove manual preference and use auto theme
-        localStorage.removeItem(CONFIG.themeKey);
-        document.documentElement.dataset.theme = getAutoTheme();
-        updateThemeIcon();
+        const next = current === 'dark' ? 'light' : 'dark';
+        // If new theme matches auto, clear manual override; otherwise save it
+        if (next === getAutoTheme()) {
+            localStorage.removeItem(CONFIG.themeKey);
+        } else {
+            localStorage.setItem(CONFIG.themeKey, next);
+        }
+        applyTheme(next);
     }
 
     function updateThemeIcon() {
         const btn = $('#themeToggle');
         if (!btn) return;
-        
         const icon = btn.querySelector('i');
-        const currentTheme = document.documentElement.dataset.theme || getAutoTheme();
-        const isDark = currentTheme === 'dark';
-        
-        // Show sun icon in dark mode (to switch to light), moon icon in light mode (to switch to dark)
+        const isDark = (document.documentElement.dataset.theme || getAutoTheme()) === 'dark';
         icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
     }
 
@@ -471,6 +449,27 @@
         
         if (!payTabs.length) return;
 
+        const updateQr = id => {
+            const config = CONFIG.payment[id];
+            if (!config) return;
+            
+            qrStage.dataset.type = id;
+            
+            // Loading state
+            qrFrame.classList.add('loading');
+            qrImage.style.opacity = '0';
+            
+            const img = new Image();
+            img.onload = () => {
+                qrImage.src = config.qr;
+                qrImage.style.opacity = '1';
+                qrFrame.classList.remove('loading');
+            };
+            img.src = config.qr;
+            
+            qrHint.textContent = getText(config.hintKey);
+        };
+
         // Preload QR images
         Object.values(CONFIG.payment).forEach(p => {
             const img = new Image();
@@ -487,22 +486,7 @@
                     qrStage.classList.add('hidden');
                     cryptoStage.classList.add('visible');
                 } else {
-                    const config = CONFIG.payment[id];
-                    qrStage.dataset.type = id;
-                    
-                    // Loading state
-                    qrFrame.classList.add('loading');
-                    qrImage.style.opacity = '0';
-                    
-                    const img = new Image();
-                    img.onload = () => {
-                        qrImage.src = config.qr;
-                        qrImage.style.opacity = '1';
-                        qrFrame.classList.remove('loading');
-                    };
-                    img.src = config.qr;
-                    
-                    qrHint.textContent = getText(config.hintKey);
+                    updateQr(id);
                     qrStage.classList.remove('hidden');
                     cryptoStage.classList.remove('visible');
                 }
@@ -510,7 +494,13 @@
         });
 
         // Init QR type
-        qrStage.dataset.type = 'wechat';
+        const defaultPayId = CONFIG.payment.wechat ? 'wechat' : Object.keys(CONFIG.payment)[0];
+        if (defaultPayId) {
+            updateQr(defaultPayId);
+            payTabs.forEach(t => t.classList.toggle('active', t.dataset.id === defaultPayId));
+            qrStage.classList.remove('hidden');
+            cryptoStage.classList.remove('visible');
+        }
 
         // Crypto copy
         $$('.crypto-row').forEach(row => {
@@ -608,11 +598,6 @@
         initSupportersPage();
     }
 
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-        if (!localStorage.getItem(CONFIG.themeKey)) {
-            updateThemeIcon();
-        }
-    });
+    // System theme listener is now handled inside initTheme()
 
 })();

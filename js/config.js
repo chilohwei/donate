@@ -53,6 +53,10 @@ window.DONATE_CONFIG = {
         alipay: {
             qr: 'https://chilohdata.s3.bitiful.net/zfb.png',
             hintKey: 'scanAlipay'
+        },
+        paypal: {
+            qr: 'https://s3.bitiful.net/chilohdata/uPic/paypal.jpg',
+            hintKey: 'scanPaypal'
         }
     },
 

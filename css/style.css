@@ -29,6 +29,7 @@
     /* Brand Colors */
     --wechat: #07c160;
     --alipay: #1677ff;
+    --paypal: #003087;
     
     /* Radius */
     --radius-sm: 10px;
@@ -52,29 +53,7 @@
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 12px 24px rgba(0, 0, 0, 0.04), 0 24px 48px rgba(0, 0, 0, 0.06);
 }
 
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg: #0a0a0a;
-        --surface: #18181b;
-        --text: #fafafa;
-        --text-muted: #a1a1aa;
-        --accent: #fb923c;
-        --accent-soft: rgba(251, 146, 60, 0.15);
-        --border: #27272a;
-        
-        --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #18181b 50%, #1c1917 100%);
-        --glow-1: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(245, 158, 11, 0.2));
-        --glow-2: linear-gradient(135deg, rgba(251, 146, 60, 0.25), rgba(234, 88, 12, 0.15));
-        --glow-3: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(239, 68, 68, 0.1));
-        --grid-color: rgba(255,255,255,0.02);
-        
-        --shimmer-bg: linear-gradient(90deg, #27272a 25%, #3f3f46 50%, #27272a 75%);
-        --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.4), 0 24px 48px rgba(0, 0, 0, 0.5);
-    }
-}
-
-/* Manual Dark Mode Toggle */
+/* Dark Mode - controlled via data-theme attribute by JS */
 [data-theme="dark"] {
     --bg: #0a0a0a;
     --surface: #18181b;
@@ -115,7 +94,7 @@
 
 /* Reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { height: 100%; -webkit-font-smoothing: antialiased; }
+html { height: 100%; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; }
 body {
     min-height: 100%;
     background: var(--bg);
@@ -124,6 +103,8 @@ body {
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
+    /* iOS safe area */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 /* ==================== */
@@ -195,7 +176,7 @@ body {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 1.6fr;
     min-height: 100vh;
     min-height: 100dvh;
     gap: 40px;
@@ -209,7 +190,7 @@ body {
 }
 
 .left-content {
-    max-width: 420px;
+    max-width: 460px;
     width: 100%;
 }
 
@@ -249,7 +230,7 @@ body {
     font-size: clamp(1rem, 2vw, 1.15rem);
     color: var(--text-muted);
     line-height: 1.8;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
 }
 
 /* ==================== */
@@ -258,7 +239,7 @@ body {
 .social-links {
     display: flex;
     gap: 12px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
 }
 
 .social-link {
@@ -401,7 +382,7 @@ body {
 /* ==================== */
 .payment-card {
     width: 100%;
-    max-width: 560px;
+    max-width: 620px;
     background: var(--surface);
     backdrop-filter: blur(20px);
     border: 1px solid var(--border);
@@ -427,8 +408,11 @@ body {
 /* Tabs */
 .pay-tabs {
     display: flex;
-    gap: 8px;
-    margin-bottom: 24px;
+    gap: 4px;
+    margin-bottom: 28px;
+    background: var(--bg);
+    border-radius: 100px;
+    padding: 4px;
 }
 
 .pay-tab {
@@ -436,12 +420,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 14px 12px;
-    background: var(--bg);
-    border: 1px solid transparent;
-    border-radius: var(--radius-md);
-    font-size: 0.95rem;
+    gap: 7px;
+    padding: 10px 8px;
+    background: transparent;
+    border: none;
+    border-radius: 100px;
+    font-size: 0.9rem;
     font-family: inherit;
     font-weight: 500;
     color: var(--text-muted);
@@ -450,35 +434,35 @@ body {
 }
 
 .pay-tab:active { transform: scale(0.97); }
-.pay-tab i { font-size: 1.3rem; transition: transform 0.3s var(--ease-spring); }
+.pay-tab i { font-size: 1.15rem; transition: transform 0.3s var(--ease-spring); }
 
 .pay-tab:hover {
     color: var(--text);
-    border-color: var(--border);
-    transform: translateY(-2px);
 }
 
-.pay-tab:hover i { transform: scale(1.15) rotate(-5deg); }
+.pay-tab:hover i { transform: scale(1.1); }
 
 /* Tab Brand States */
-.pay-tab[data-id="wechat"]:hover { color: var(--wechat); border-color: var(--wechat); background: rgba(7, 193, 96, 0.1); }
-.pay-tab[data-id="wechat"].active { background: var(--wechat); color: #fff; box-shadow: 0 4px 12px rgba(7, 193, 96, 0.3); }
+.pay-tab[data-id="wechat"]:hover { color: var(--wechat); }
+.pay-tab[data-id="wechat"].active { background: var(--wechat); color: #fff; box-shadow: 0 2px 10px rgba(7, 193, 96, 0.25); }
 
-.pay-tab[data-id="alipay"]:hover { color: var(--alipay); border-color: var(--alipay); background: rgba(22, 119, 255, 0.1); }
-.pay-tab[data-id="alipay"].active { background: var(--alipay); color: #fff; box-shadow: 0 4px 12px rgba(22, 119, 255, 0.3); }
+.pay-tab[data-id="alipay"]:hover { color: var(--alipay); }
+.pay-tab[data-id="alipay"].active { background: var(--alipay); color: #fff; box-shadow: 0 2px 10px rgba(22, 119, 255, 0.25); }
 
-.pay-tab[data-id="crypto"]:hover { color: var(--btc); border-color: var(--btc); background: rgba(247, 147, 26, 0.1); }
+.pay-tab[data-id="paypal"]:hover { color: var(--paypal); }
+.pay-tab[data-id="paypal"].active { background: var(--paypal); color: #fff; box-shadow: 0 2px 10px rgba(0, 48, 135, 0.25); }
+
+.pay-tab[data-id="crypto"]:hover { color: var(--btc); }
 .pay-tab[data-id="crypto"].active { 
     background: linear-gradient(135deg, var(--btc), var(--eth), var(--sol)); 
     color: #fff; 
-    box-shadow: 0 4px 12px rgba(247, 147, 26, 0.3); 
+    box-shadow: 0 2px 10px rgba(247, 147, 26, 0.25); 
 }
 
 /* Content Area */
 .pay-content {
     position: relative;
-    min-height: 360px;
-    margin-bottom: 24px;
+    min-height: 340px;
 }
 
 /* QR Stage */
@@ -489,15 +473,15 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 24px;
     transition: all 0.3s var(--ease-out);
 }
 
 .qr-stage.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
 .qr-frame {
-    width: 220px;
-    height: 220px;
+    width: 240px;
+    height: 240px;
     background: var(--surface);
     border: 2px solid var(--border);
     border-radius: var(--radius-lg);
@@ -550,6 +534,11 @@ body {
 .qr-stage[data-type="alipay"] .qr-frame {
     --qr-glow: linear-gradient(135deg, var(--alipay), #60a5fa);
     --qr-shadow: 0 20px 50px rgba(22, 119, 255, 0.2);
+}
+
+.qr-stage[data-type="paypal"] .qr-frame {
+    --qr-glow: linear-gradient(135deg, var(--paypal), #2563eb);
+    --qr-shadow: 0 20px 50px rgba(0, 48, 135, 0.2);
 }
 
 .qr-frame img {
@@ -612,9 +601,13 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
     transform: translateX(-100%);
     transition: transform 0.6s;
+}
+
+[data-theme="light"] .crypto-row::before {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
 }
 
 .crypto-row:hover::before { transform: translateX(100%); }
@@ -1039,12 +1032,22 @@ body {
 @media (max-width: 900px) {
     .supporters-page { padding: 80px 24px 60px; }
     .supporters-grid { gap: 10px; }
+    .page-title { font-size: clamp(1.6rem, 5vw, 2.5rem); }
 }
 
-/* Mobile */
+/* Mobile - supporters */
 @media (max-width: 600px) {
-    .supporters-page { padding: 70px 16px 40px; }
-    .supporters-grid { gap: 8px; }
+    .supporters-page { padding: 64px 20px calc(40px + env(safe-area-inset-bottom)); }
+    .supporters-grid { gap: 10px; }
+    .page-header { margin-bottom: 36px; }
+    .supporter-card { padding: 8px 14px 8px 8px; gap: 10px; }
+    .supporter-avatar { width: 30px; height: 30px; font-size: 0.75rem; }
+    .supporter-name { font-size: 0.82rem; max-width: 100px; }
+    .supporter-amount { font-size: 0.72rem; padding: 3px 10px; }
+    .funds-usage { margin-top: 56px; padding-top: 40px; }
+    .funds-title { margin-bottom: 28px; }
+    .fund-item { padding: 18px; gap: 14px; }
+    .fund-icon { width: 40px; height: 40px; font-size: 1rem; }
 }
 
 /* Supporter Badge Card - Compact & Elegant */
@@ -1142,6 +1145,11 @@ body {
 .supporter-amount.crypto {
     background: linear-gradient(135deg, #f3e8ff, #ede9fe);
     color: #7c3aed;
+}
+
+[data-theme="dark"] .supporter-amount.crypto {
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
 }
 
 /* Hide elements no longer needed */
@@ -1396,41 +1404,111 @@ body {
 /* ==================== */
 /* Responsive */
 /* ==================== */
+
+/* Large desktop */
+@media (min-width: 1200px) {
+    .layout { padding: 56px 64px; gap: 56px; }
+    .left-content { max-width: 520px; }
+    .payment-card { max-width: 720px; padding: 36px; }
+    .pay-content { min-height: 420px; }
+    .qr-frame { width: 260px; height: 260px; }
+}
+
+/* Tablet & Mobile - single column, entire content centered */
 @media (max-width: 900px) {
     .layout {
         grid-template-columns: 1fr;
+        min-height: 100vh;
+        min-height: 100dvh;
         padding: 24px;
-        gap: 32px;
+        gap: 0;
+        align-content: center;
+        justify-items: center;
     }
     
-    .left-panel { text-align: center; }
+    .left-panel { text-align: center; margin-bottom: 28px; }
     .left-content { max-width: 100%; }
-    .social-links { justify-content: center; }
+    .right-panel { width: 100%; max-width: 480px; }
+
+    /* Hero */
+    .hero-greeting { margin-bottom: 8px; }
+    .hero-title { font-size: clamp(1.6rem, 5vw, 2.4rem); margin-bottom: 12px; }
+    .hero-desc { margin-bottom: 28px; }
+    .social-links { justify-content: center; margin-bottom: 28px; }
     .left-content .cta-btn { justify-content: center; }
-    .payment-card { max-width: 100%; }
+
+    .left-panel { margin-bottom: 40px; }
+
+    /* Card */
+    .payment-card { max-width: 100%; padding: 28px; animation: cardEnter 0.7s var(--ease-out) 0.2s forwards; }
 }
 
+/* Mobile */
 @media (max-width: 600px) {
-    .layout { padding: 16px; gap: 24px; }
-    .payment-card { padding: 24px; }
-    
+    .layout {
+        padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
+    }
+    .left-panel { margin-bottom: 20px; }
+
+    /* Hero: tight cluster */
+    .hero-greeting { margin-bottom: 6px; }
+    .hero-title { font-size: 1.6rem; margin-bottom: 8px; line-height: 1.2; }
+    .hero-desc { font-size: 0.92rem; margin-bottom: 24px; line-height: 1.7; }
+    .social-links { margin-bottom: 24px; }
+    .left-panel { margin-bottom: 32px; }
+    .left-content .cta-btn { padding: 12px 28px; }
+
+    /* Card */
+    .payment-card { padding: 24px 20px; border-radius: var(--radius-xl); }
+
+    /* Pill tabs: icon-only, compact */
+    .pay-tabs { margin-bottom: 0; padding: 3px; }
+    .pay-tab { padding: 9px 6px; }
     .pay-tab span { display: none; }
     .pay-tab.active span { display: inline; }
-    .pay-tab { padding: 12px 8px; }
-    
-    .qr-frame { width: 180px; height: 180px; }
-    
-    .crypto-row { padding: 12px; }
-    .crypto-addr { font-size: 0.7rem; }
+    .pay-tab i { font-size: 1.1rem; }
+
+    /* QR: breathing room */
+    .qr-frame { width: 200px; height: 200px; padding: 14px; }
+    .qr-stage { gap: 18px; }
+    .qr-hint { font-size: 0.88rem; }
+
+    /* Crypto */
+    .crypto-stage { gap: 8px; }
+    .crypto-row { padding: 14px 16px; }
+    .crypto-addr { font-size: 0.68rem; }
+
+    /* Fixed UI */
+    .back-btn { top: 14px; left: 14px; padding: 8px 14px; font-size: 0.82rem; }
     .back-btn span { display: none; }
-    
+    .theme-toggle-fixed { top: 14px; right: 14px; width: 40px; height: 40px; font-size: 1rem; }
+
     .modal { max-width: calc(100% - 32px); }
     .modal-form { padding: 24px 20px; }
+    .supporters-page { padding: 64px 20px 40px; }
 }
 
+/* Small mobile */
 @media (max-width: 400px) {
-    .social-links { gap: 8px; }
+    .layout { padding: 16px; }
+    .left-panel { margin-bottom: 16px; }
+    .hero-title { font-size: 1.45rem; }
     .social-link { width: 40px; height: 40px; font-size: 1rem; }
+    .payment-card { padding: 20px 16px; }
+    .qr-frame { width: 180px; height: 180px; }
+}
+
+/* Landscape mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .layout { grid-template-columns: 1fr 1.4fr; padding: 20px; gap: 20px; }
+    .left-panel { text-align: left; margin-bottom: 0; }
+    .right-panel { max-width: 100%; }
+    .social-links { justify-content: flex-start; }
+    .hero-title { font-size: 1.5rem; }
+    .hero-desc { margin-bottom: 12px; }
+    .payment-card { padding: 20px; }
+    .pay-content { min-height: 200px; }
+    .qr-frame { width: 150px; height: 150px; }
 }
 
 /* Reduced Motion */
