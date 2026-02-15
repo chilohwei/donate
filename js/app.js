@@ -526,6 +526,7 @@
                 });
             });
         });
+
     }
 
     // Supporters Page
@@ -537,13 +538,8 @@
         
         if (!grid) return;
 
-        // Get stored supporters, merge with mock data if empty
-        let stored = JSON.parse(localStorage.getItem(CONFIG.storageKey) || '[]');
-        
-        // If no real supporters, use mock data
-        if (stored.length === 0) {
-            stored = MOCK_SUPPORTERS;
-        }
+        // Supporters data from config.js (manually maintained)
+        const stored = MOCK_SUPPORTERS;
 
         if (supporterCount) supporterCount.textContent = stored.length;
 

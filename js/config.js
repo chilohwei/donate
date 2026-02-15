@@ -119,8 +119,9 @@ window.DONATE_CONFIG = {
     },
 
     // ========================================
-    // Mock Supporters Data (for demo)
-    // Set to empty array [] to disable mock data
+    // Supporters Data
+    // Manually update after confirming payment.
+    // Set to empty array [] if no supporters yet.
     // 
     // Fields:
     //   name     - Supporter name
