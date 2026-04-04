@@ -71,28 +71,50 @@ window.DONATE_CONFIG = {
     crypto: {
         btc: {
             name: 'BTC',
-            address: 'bc1qm67zc7wvmft8facyzrdzwzjw3g44xql2jgkt2x',
+            network: 'SegWit',
+            address: 'bc1qpqchzes0wrhtg5h2rwvh3f6tf5weljetx2adun',
+            note: 'Native SegWit (BIP84 P2WPKH).',
+            icon: 'fa-brands fa-bitcoin',
+            color: 'btc'
+        },
+        btcTaproot: {
+            name: 'BTC',
+            network: 'Taproot',
+            address: 'bc1pa26d29z4y0elcg0s3qraddusd5kuyqkpm3jqyy5ve69sjt07x7fst7dzfm',
+            note: 'Taproot (BIP86 key-path only).',
             icon: 'fa-brands fa-bitcoin',
             color: 'btc'
         },
         eth: {
             name: 'ETH',
-            address: '0x60d8E57244632C3D30E920B32241D2551e643547',
+            network: 'EVM',
+            address: '0x797A13aB0398eef748cF6D8C518b0803a14918b1',
+            note: 'Same 0x on ETH, BSC, Polygon, Arb, OP, Base, Avalanche C-Chain, etc. USDT ERC-20 / BEP-20 — pick the chain in your wallet.',
             icon: 'fa-brands fa-ethereum',
             color: 'eth'
         },
         sol: {
             name: 'SOL',
-            address: 'Cud6QkndsBo2tD7RgZWqujtNa3SJk1srBNWMNh3vR2SQ',
+            address: 'GXTtMhJvbpmdrqSz5x65Hzd6wia5YYwaHdnxCB3PC1HY',
+            note: 'SLIP-0010 Ed25519; Phantom-compatible. USDT SPL shares this address.',
             icon: 'fa-solid fa-sun',
             color: 'sol'
         },
-        usdt: {
+        usdtSpl: {
             name: 'USDT',
-            network: 'TRC20',
-            address: 'TFvA3o3TT3WEfdiHUuyioihMaSzjki9byX',
+            network: 'SPL',
+            address: 'GXTtMhJvbpmdrqSz5x65Hzd6wia5YYwaHdnxCB3PC1HY',
+            note: 'Solana SPL only — not Tron TRC-20.',
             icon: 'fa-solid fa-dollar-sign',
             color: 'usdt'
+        },
+        usdtTron: {
+            name: 'USDT',
+            network: 'TRC-20',
+            address: 'TQeEKzMRvAUXEU5tsiPR1GX8WUHdhKUhwg',
+            note: 'Tron network only — different chain from Solana / EVM.',
+            icon: 'fa-solid fa-bolt',
+            color: 'trx'
         }
     },
 

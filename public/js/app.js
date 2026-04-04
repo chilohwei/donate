@@ -571,21 +571,27 @@
             const row = document.createElement('div');
             row.className = 'crypto-row';
             row.dataset.address = coin.address;
-            row.dataset.coinName = coin.name;
+            const labelParts = [coin.name, coin.network].filter(Boolean);
+            row.dataset.coinName = labelParts.join(' ');
             row.dataset.coin = coin.color;
             row.setAttribute('role', 'button');
             row.setAttribute('tabindex', '0');
-            row.setAttribute('aria-label', `${getText('copyCryptoAddress')}: ${coin.name}`);
-            
-            const nameHtml = coin.network 
-                ? `${coin.name} <span class="tag">${coin.network}</span>` 
-                : coin.name;
-            
+            const ariaExtra = coin.note ? ` — ${coin.note}` : '';
+            row.setAttribute('aria-label', `${getText('copyCryptoAddress')}: ${labelParts.join(' ')}${ariaExtra}`);
+
+            const nameHtml = coin.network
+                ? `${escapeHtml(coin.name)} <span class="tag">${escapeHtml(coin.network)}</span>`
+                : escapeHtml(coin.name);
+            const noteHtml = coin.note
+                ? `<p class="crypto-hint">${escapeHtml(coin.note)}</p>`
+                : '';
+
             row.innerHTML = `
                 <i class="${coin.icon} crypto-icon ${coin.color}" aria-hidden="true"></i>
                 <div class="crypto-info">
                     <span class="crypto-name">${nameHtml}</span>
-                    <code class="crypto-addr">${coin.address}</code>
+                    <code class="crypto-addr">${escapeHtml(coin.address)}</code>
+                    ${noteHtml}
                 </div>
                 <i class="fa-regular fa-copy copy-icon" aria-hidden="true"></i>
             `;

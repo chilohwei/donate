@@ -9,6 +9,7 @@
     --eth: #627eea;
     --sol: #9945ff;
     --usdt: #26a17b;
+    --trx: #ff0013;
 
     /* Brand Colors */
     --wechat: #07c160;
@@ -565,6 +566,10 @@ body {
 .crypto-stage.visible .crypto-row:nth-child(2) { animation-delay: 0.05s; }
 .crypto-stage.visible .crypto-row:nth-child(3) { animation-delay: 0.1s; }
 .crypto-stage.visible .crypto-row:nth-child(4) { animation-delay: 0.15s; }
+.crypto-stage.visible .crypto-row:nth-child(5) { animation-delay: 0.2s; }
+.crypto-stage.visible .crypto-row:nth-child(6) { animation-delay: 0.25s; }
+.crypto-stage.visible .crypto-row:nth-child(7) { animation-delay: 0.3s; }
+.crypto-stage.visible .crypto-row:nth-child(8) { animation-delay: 0.35s; }
 
 @keyframes cryptoSlideIn {
     from { opacity: 0; transform: translateX(-16px); }
@@ -607,6 +612,7 @@ body {
 .crypto-row[data-coin="eth"]:hover { border-color: var(--eth); box-shadow: -4px 0 0 var(--eth), 0 4px 16px rgba(98, 126, 234, 0.1); }
 .crypto-row[data-coin="sol"]:hover { border-color: var(--sol); box-shadow: -4px 0 0 var(--sol), 0 4px 16px rgba(153, 69, 255, 0.1); }
 .crypto-row[data-coin="usdt"]:hover { border-color: var(--usdt); box-shadow: -4px 0 0 var(--usdt), 0 4px 16px rgba(38, 161, 123, 0.1); }
+.crypto-row[data-coin="trx"]:hover { border-color: var(--trx); box-shadow: -4px 0 0 var(--trx), 0 4px 16px rgba(255, 0, 19, 0.12); }
 
 .crypto-row.copied {
     border-color: #059669;
@@ -636,6 +642,7 @@ body {
 .crypto-icon.eth { color: var(--eth); }
 .crypto-icon.sol { color: var(--sol); }
 .crypto-icon.usdt { color: var(--usdt); }
+.crypto-icon.trx { color: var(--trx); }
 
 .crypto-info { flex: 1; min-width: 0; }
 
@@ -667,6 +674,15 @@ body {
     text-overflow: ellipsis;
 }
 
+.crypto-hint {
+    margin: 6px 0 0;
+    font-size: 0.68rem;
+    line-height: 1.45;
+    color: var(--text-muted);
+    font-weight: 400;
+    white-space: normal;
+}
+
 .copy-icon {
     font-size: 1.1rem;
     color: var(--text-muted);
@@ -678,6 +694,7 @@ body {
 .crypto-row[data-coin="eth"]:hover .copy-icon { color: var(--eth); }
 .crypto-row[data-coin="sol"]:hover .copy-icon { color: var(--sol); }
 .crypto-row[data-coin="usdt"]:hover .copy-icon { color: var(--usdt); }
+.crypto-row[data-coin="trx"]:hover .copy-icon { color: var(--trx); }
 .crypto-row.copied .copy-icon { color: #059669; }
 
 /* ==================== */
