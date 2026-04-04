@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Support Chiloh's creative work. Donate via WeChat, Alipay, PayPal, or Crypto (BTC, ETH, SOL, USDT).">
+    <meta name="keywords" content="donate, support, sponsor, creator, WeChat, Alipay, PayPal, Bitcoin, Ethereum, crypto donation">
+    <meta name="author" content="Chiloh">
+    <meta property="og:title" content="Support Chiloh | Buy Me a Coffee ☕">
+    <meta property="og:description" content="Support my creative work with a donation. Every contribution helps fuel my journey.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Support Chiloh | Buy Me a Coffee ☕">
+    <meta name="twitter:description" content="Support my creative work with a donation.">
+    <title>Support Chiloh | Buy Me a Coffee ☕</title>
+
+    <script src="js/config.js?v=1.0.0"></script>
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/fontawesome.min.css" rel="stylesheet" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/solid.min.css" rel="stylesheet" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/regular.min.css" rel="stylesheet" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/brands.min.css" rel="stylesheet" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css?v=1.0.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💝</text></svg>">
+</head>
+<body>
+
+    <!-- 动态背景 -->
+    <div class="bg-decoration">
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <div class="bg-glow glow-3"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <div class="chrome-controls" id="chromeControls">
+        <div class="lang-switch">
+            <label class="visually-hidden" for="langSelect" data-i18n="languageMenu">Language</label>
+            <select id="langSelect" class="lang-select" aria-label="Language"></select>
+        </div>
+        <button type="button" class="theme-toggle-fixed" id="themeToggle" aria-pressed="false" aria-label="Theme">
+            <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <!-- 主布局 -->
+    <main class="layout">
+
+        <!-- 左侧：感谢语 -->
+        <section class="left-panel">
+            <div class="left-content">
+                <p class="hero-greeting" data-i18n="greeting">Hi, friend</p>
+                <h1 class="hero-title" data-i18n="headline">Support My Work</h1>
+                <p class="hero-desc" data-i18n="message">Every contribution helps keep projects and writing going.<br>Thank you for being here.</p>
+
+                <div class="social-links" id="socialLinks">
+                </div>
+
+                <a href="supporters.html" target="supporters" class="cta-btn">
+                    <i class="fa-solid fa-gift" aria-hidden="true"></i>
+                    <span data-i18n="viewSupporters">View Supporters</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 右侧：支付 (加宽) -->
+        <section class="right-panel">
+            <div class="payment-card">
+                <div class="pay-tabs" id="payTablist" role="tablist" aria-label="Payment methods">
+                    <button type="button" class="pay-tab active" role="tab" id="pay-tab-wechat" data-id="wechat" aria-selected="true" aria-controls="payment-panel" tabindex="0">
+                        <i class="fa-brands fa-weixin" aria-hidden="true"></i>
+                        <span data-i18n="wechat">WeChat</span>
+                    </button>
+                    <button type="button" class="pay-tab" role="tab" id="pay-tab-alipay" data-id="alipay" aria-selected="false" aria-controls="payment-panel" tabindex="-1">
+                        <i class="fa-brands fa-alipay" aria-hidden="true"></i>
+                        <span data-i18n="alipay">Alipay</span>
+                    </button>
+                    <button type="button" class="pay-tab" role="tab" id="pay-tab-paypal" data-id="paypal" aria-selected="false" aria-controls="payment-panel" tabindex="-1">
+                        <i class="fa-brands fa-paypal" aria-hidden="true"></i>
+                        <span data-i18n="paypal">PayPal</span>
+                    </button>
+                    <button type="button" class="pay-tab" role="tab" id="pay-tab-crypto" data-id="crypto" aria-selected="false" aria-controls="payment-panel" tabindex="-1">
+                        <i class="fa-brands fa-bitcoin" aria-hidden="true"></i>
+                        <span data-i18n="crypto">Crypto</span>
+                    </button>
+                </div>
+
+                <div class="pay-content" id="payment-panel" role="tabpanel" aria-labelledby="pay-tab-wechat">
+                    <div class="qr-stage" id="qrStage">
+                        <div class="qr-frame">
+                            <img src="https://chilohdata.s3.bitiful.net/wechat.png" alt="" id="qrImage" width="212" height="212" decoding="async">
+                        </div>
+                        <p class="qr-hint" id="qrHint" data-i18n="scanWechat">Scan with WeChat</p>
+                    </div>
+
+                    <div class="crypto-stage" id="cryptoStage">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <noscript>
+        <p style="text-align:center;padding:60px 24px;font-family:sans-serif;color:#71717a;">
+            This page requires JavaScript to display payment methods and supporters.
+        </p>
+    </noscript>
+    <script src="js/app.js?v=1.0.0"></script>
+</body>
+</html>

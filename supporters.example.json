@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Example Patron",
+    "amount": "20.00",
+    "currency": "$",
+    "colorIdx": 0
+  },
+  {
+    "name": "Anonymous",
+    "amount": "50",
+    "currency": "USDT",
+    "colorIdx": 1
+  }
+]

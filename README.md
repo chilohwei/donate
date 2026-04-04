@@ -1,5 +1,6 @@
 # Donate Page
 
+![Version](https://img.shields.io/badge/version-1.0.0-22c55e?style=flat-square)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -18,6 +19,7 @@ A beautiful, modern donation page with multiple payment methods and a supporters
 - **Multiple Payment Methods**
   - WeChat Pay (QR Code)
   - Alipay (QR Code)
+  - PayPal (QR Code)
   - Crypto: BTC, ETH, SOL, USDT (TRC-20)
 
 - **Supporters Wall**
@@ -40,23 +42,28 @@ A beautiful, modern donation page with multiple payment methods and a supporters
 | Category | Technology |
 |----------|------------|
 | Markup | HTML5 |
-| Styling | CSS3 (Variables, Flexbox, Grid, Animations) |
+| Styling | CSS3 (Variables, Flexbox, Grid, `content-visibility`, Animations) |
 | Logic | Vanilla JavaScript (ES6+) |
-| Icons | Font Awesome 6 |
+| Icons | Font Awesome 6 (fontawesome + solid + regular + brands CSS) |
 | Fonts | Inter, Playfair Display |
 
 ## Project Structure
 
 ```
 donate/
-├── index.html          # Main donation page
-├── supporters.html     # Supporters wall
-├── css/
-│   └── style.css       # All styles (light/dark themes)
-├── js/
-│   ├── config.js       # Configuration (addresses, social links)
-│   └── app.js          # Main application logic
+├── public/                     # Served by Cloudflare Workers (static assets)
+│   ├── index.html
+│   ├── supporters.html
+│   ├── supporters.json
+│   ├── css/style.css
+│   └── js/config.js, app.js
+├── supporters.example.json
+├── VERSION                     # SemVer (bump + sync HTML ?v= query + badge when releasing)
+├── CHANGELOG.md
+├── .github/workflows/ci.yml    # validate supporters.json; deploy Workers on push to main
+├── wrangler.jsonc
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
@@ -70,23 +77,39 @@ cd donate
 
 2. Start a local server:
 ```bash
-python3 -m http.server 8080
+python3 -m http.server 8080 -d public
 # or
-npx serve .
+npx serve public
 ```
 
 3. Open http://localhost:8080 in your browser.
 
+## Continuous deployment (Cloudflare Workers)
+
+Pushes to `main` run [`.github/workflows/ci.yml`](.github/workflows/ci.yml): validate `public/supporters.json`, then `wrangler deploy`.
+
+In the GitHub repo, add **Settings → Secrets and variables → Actions**:
+
+| Secret | Purpose |
+|--------|---------|
+| `CLOUDFLARE_API_TOKEN` | API token with Workers Scripts edit/deploy ([Workers CI/CD](https://developers.cloudflare.com/workers/ci-cd/)) |
+| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID (same as dashboard URL / wrangler) |
+
+Pull requests only run validation; deploy runs after a successful merge to `main`.
+
 ## Configuration
 
-Edit `js/config.js` to customize:
+Edit `public/js/config.js` to customize:
 
 ```javascript
 window.DONATE_CONFIG = {
-    // Site info
+    // Site info (ogImage + canonical* inject <meta>/<link> when set — see head load of config.js)
     site: {
         name: 'Your Name',
-        title: 'Support Me | Buy Me a Coffee'
+        title: 'Support Me | Buy Me a Coffee',
+        ogImage: '',
+        canonicalDonate: '',
+        canonicalSupporters: ''
     },
     
     // Social links
@@ -109,13 +132,24 @@ window.DONATE_CONFIG = {
         // ...
     },
     
-    // Mock supporters (for demo)
-    mockSupporters: [
-        { name: 'Supporter', amount: '10.00', currency: '$', colorIdx: 0 },
-        // ...
-    ]
+    // Optional: override data URL (default supporters.json next to the HTML files)
+    supporters: {
+        dataUrl: 'supporters.json'
+    }
 };
 ```
+
+Edit **`public/supporters.json`** after you confirm a payment (see **`supporters.example.json`**). Each entry:
+
+| Field | Required | Notes |
+|-------|----------|--------|
+| `name` | yes | Display name; use `"Anonymous"` if needed |
+| `amount` | no | String, e.g. `"88.00"` |
+| `currency` | no | Fiat prefix: `"$"`, `"¥"`, `"€"` or crypto: `"BTC"`, `"ETH"`, `"SOL"`, `"USDT"` |
+| `colorIdx` | no | `0`–`9` for avatar gradient (see `avatarColors` in config) |
+| `avatar` | no | Image URL for photo avatar |
+
+Omit `amount` / `currency` to show name only.
 
 ## Screenshots
 

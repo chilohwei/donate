@@ -13,7 +13,12 @@ window.DONATE_CONFIG = {
         name: 'Chiloh',
         title: 'Support Chiloh | Buy Me a Coffee ☕',
         description: 'Support my creative work with a donation.',
-        author: 'Chiloh'
+        author: 'Chiloh',
+        // Optional: absolute URL to a 1200×630 image for Open Graph / Twitter cards
+        ogImage: '',
+        // Optional: full URLs for <link rel="canonical"> (per-page, set both when using)
+        canonicalDonate: '',
+        canonicalSupporters: ''
     },
 
     // ========================================
@@ -112,37 +117,12 @@ window.DONATE_CONFIG = {
     },
 
     // ========================================
-    // Supporters Settings
+    // Supporters wall — data file (edit supporters.json, then deploy)
     // ========================================
     supporters: {
-        storageKey: 'donate_supporters'
+        // Relative to the HTML page URL (same directory by default)
+        dataUrl: 'supporters.json'
     },
-
-    // ========================================
-    // Supporters Data
-    // Manually update after confirming payment.
-    // Set to empty array [] if no supporters yet.
-    // 
-    // Fields:
-    //   name     - Supporter name
-    //   amount   - Numeric amount (string)
-    //   currency - Currency: '$', '¥', '€', 'BTC', 'ETH', 'SOL', 'USDT'
-    //   colorIdx - Avatar color index (0-9)
-    // ========================================
-    mockSupporters: [
-        { name: 'Alex Chen', amount: '50.00', currency: '$', colorIdx: 0 },
-        { name: '小明', amount: '88.00', currency: '¥', colorIdx: 1 },
-        { name: 'Sarah K.', amount: '0.005', currency: 'ETH', colorIdx: 2 },
-        { name: '田中太郎', amount: '5000', currency: '¥', colorIdx: 3 },
-        { name: 'Mike J.', amount: '0.001', currency: 'BTC', colorIdx: 4 },
-        { name: '李华', amount: '66.00', currency: '¥', colorIdx: 5 },
-        { name: 'Emma W.', amount: '25.00', currency: '$', colorIdx: 6 },
-        { name: '王小红', amount: '128.00', currency: '¥', colorIdx: 7 },
-        { name: 'David L.', amount: '2', currency: 'SOL', colorIdx: 8 },
-        { name: 'Sophie M.', amount: '20.00', currency: '€', colorIdx: 9 },
-        { name: '김민수', amount: '50', currency: 'USDT', colorIdx: 0 },
-        { name: 'Anonymous', amount: '15.00', currency: '$', colorIdx: 1 }
-    ],
 
     // ========================================
     // Avatar Color Palettes
@@ -161,4 +141,31 @@ window.DONATE_CONFIG = {
         ['#84cc16', '#65a30d']  // Lime
     ]
 };
+
+(function donateInjectHeadMeta() {
+    if (typeof document === 'undefined') return;
+    const site = window.DONATE_CONFIG && window.DONATE_CONFIG.site;
+    if (!site) return;
+
+    if (site.ogImage) {
+        const og = document.createElement('meta');
+        og.setAttribute('property', 'og:image');
+        og.setAttribute('content', site.ogImage);
+        document.head.appendChild(og);
+        const twImg = document.createElement('meta');
+        twImg.name = 'twitter:image';
+        twImg.content = site.ogImage;
+        document.head.appendChild(twImg);
+    }
+
+    if (typeof location === 'undefined' || !location.pathname) return;
+    const isSupporters = /supporters\.html$/i.test(location.pathname);
+    const canonical = isSupporters ? site.canonicalSupporters : site.canonicalDonate;
+    if (canonical) {
+        const link = document.createElement('link');
+        link.rel = 'canonical';
+        link.href = canonical;
+        document.head.appendChild(link);
+    }
+})();
 
