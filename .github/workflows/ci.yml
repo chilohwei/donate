@@ -18,20 +18,3 @@ jobs:
           node --check public/js/config.js
           node --check public/js/theme-boot.js
           node --check public/js/app.js
-
-  deploy:
-    name: Deploy to Cloudflare Workers
-    needs: validate
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install wrangler
-        run: npm install -g wrangler@4
-      - name: Deploy
-        run: wrangler deploy
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

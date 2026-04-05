@@ -1,6 +1,6 @@
 # Donate Page
 
-![Version](https://img.shields.io/badge/version-1.0.2-22c55e?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.0.3-22c55e?style=flat-square)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -85,16 +85,9 @@ npx serve public
 
 ## Continuous deployment (Cloudflare Workers)
 
-Pushes to `main` run [`.github/workflows/ci.yml`](.github/workflows/ci.yml): validate `public/supporters.json`, then `wrangler deploy`.
+Deployment is handled by **Cloudflare Workers Builds** (connected via the Cloudflare dashboard). Pushes to `main` auto-deploy.
 
-In the GitHub repo, add **Settings → Secrets and variables → Actions**:
-
-| Secret | Purpose |
-|--------|---------|
-| `CLOUDFLARE_API_TOKEN` | API token with Workers Scripts edit/deploy ([Workers CI/CD](https://developers.cloudflare.com/workers/ci-cd/)) |
-| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID (same as dashboard URL / wrangler) |
-
-Pull requests only run validation; deploy runs after a successful merge to `main`.
+GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) runs **validation only**: `supporters.json` schema check + `node --check` on all JS files. Pull requests and pushes to `main` both trigger validation.
 
 ## Configuration
 
