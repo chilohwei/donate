@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="View all supporters who have contributed to Chiloh's creative journey. Join the community!">
     <meta name="keywords" content="supporters, donors, community, thank you, appreciation">
@@ -14,19 +15,22 @@
     <meta name="twitter:description" content="Meet the amazing people who support Chiloh's work.">
     <title>Supporters Wall | Chiloh</title>
 
-    <script src="js/config.js?v=1.0.1"></script>
+    <script src="js/config.js?v=1.0.2"></script>
+    <script src="js/theme-boot.js?v=1.0.2"></script>
 
+    <link rel="prefetch" href="index.html" as="document">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/fontawesome.min.css" rel="stylesheet" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/solid.min.css" rel="stylesheet" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/regular.min.css" rel="stylesheet" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/brands.min.css" rel="stylesheet" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet">
+    </noscript>
 
-    <link rel="stylesheet" href="css/style.css?v=1.0.1">
+    <link rel="stylesheet" href="css/style.css?v=1.0.2">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💝</text></svg>">
 </head>
 <body>
@@ -36,16 +40,6 @@
         <div class="bg-glow glow-2"></div>
         <div class="bg-glow glow-3"></div>
         <div class="bg-grid"></div>
-    </div>
-
-    <div class="chrome-controls chrome-controls--supporters">
-        <div class="lang-switch">
-            <label class="visually-hidden" for="langSelect" data-i18n="languageMenu">Language</label>
-            <select id="langSelect" class="lang-select" aria-label="Language"></select>
-        </div>
-        <button type="button" class="theme-toggle-fixed" id="themeToggle" aria-pressed="false" aria-label="Theme">
-            <i class="fa-solid fa-sun" aria-hidden="true"></i>
-        </button>
     </div>
 
     <a href="index.html" class="back-btn">
@@ -136,9 +130,10 @@
 
     <noscript>
         <p style="text-align:center;padding:60px 24px;font-family:sans-serif;color:#71717a;">
-            This page requires JavaScript to load supporter data and display content.
+            This page requires JavaScript to load supporter data and display content.<br>
+            本页需要启用 JavaScript 以加载支持者数据并显示内容。
         </p>
     </noscript>
-    <script src="js/app.js?v=1.0.1"></script>
+    <script src="js/app.js?v=1.0.2"></script>
 </body>
 </html>

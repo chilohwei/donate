@@ -14,24 +14,10 @@
     const CONFIG = {
         payment: SITE_CONFIG.payment || {},
         crypto: SITE_CONFIG.crypto || {},
-        themeKey: SITE_CONFIG.theme?.storageKey || 'donate_theme',
-        langKey: SITE_CONFIG.language?.storageKey || 'donate_lang',
         supportedLangs: SITE_CONFIG.language?.supported || ['en'],
         defaultLang: SITE_CONFIG.language?.default || 'en',
         nightStart: SITE_CONFIG.theme?.nightStart || 18,
         nightEnd: SITE_CONFIG.theme?.nightEnd || 6
-    };
-
-    const LANG_LABELS = {
-        en: 'English',
-        'zh-CN': '简体中文',
-        'zh-TW': '繁體中文',
-        ja: '日本語',
-        ko: '한국어',
-        fr: 'Français',
-        de: 'Deutsch',
-        es: 'Español',
-        it: 'Italiano'
     };
 
     // Avatar Color Palettes
@@ -64,14 +50,12 @@
             fundContentDesc: 'More tutorials, articles, and open source',
             fundCoffee: 'Coffee & Energy',
             fundCoffeeDesc: 'Fuel for late-night coding sessions',
-            switchToDark: 'Switch to dark mode',
-            switchToLight: 'Switch to light mode',
             payMethodTabs: 'Payment methods',
-            languageMenu: 'Language',
             copyAddressFailed: 'Could not copy address',
             addressCopied: 'Address copied!',
             copyCryptoAddress: 'Copy address',
-            qrAlt: 'Payment QR code'
+            qrAlt: 'Payment QR code',
+            qrLoadError: 'Could not load QR code image'
         },
         'zh-CN': {
             greeting: 'Hi, 朋友',
@@ -95,14 +79,12 @@
             fundContentDesc: '更多教程、文章和开源项目',
             fundCoffee: '咖啡续命',
             fundCoffeeDesc: '深夜写代码的能量来源',
-            switchToDark: '切换到深色模式',
-            switchToLight: '切换到浅色模式',
             payMethodTabs: '支付方式',
-            languageMenu: '语言',
             copyAddressFailed: '无法复制地址',
             addressCopied: '地址已复制！',
             copyCryptoAddress: '复制地址',
-            qrAlt: '付款二维码'
+            qrAlt: '付款二维码',
+            qrLoadError: '二维码图片加载失败'
         },
         'zh-TW': {
             greeting: 'Hi, 朋友',
@@ -126,14 +108,12 @@
             fundContentDesc: '更多教程、文章和開源專案',
             fundCoffee: '咖啡續命',
             fundCoffeeDesc: '深夜寫程式的能量來源',
-            switchToDark: '切換到深色模式',
-            switchToLight: '切換到淺色模式',
             payMethodTabs: '付款方式',
-            languageMenu: '語言',
             copyAddressFailed: '無法複製地址',
             addressCopied: '地址已複製！',
             copyCryptoAddress: '複製地址',
-            qrAlt: '付款 QR Code'
+            qrAlt: '付款 QR Code',
+            qrLoadError: '二維碼圖片載入失敗'
         },
         ja: {
             greeting: 'こんにちは',
@@ -157,10 +137,7 @@
             fundContentDesc: 'チュートリアル、記事、オープンソース',
             fundCoffee: 'コーヒー代',
             fundCoffeeDesc: '深夜コーディングのエネルギー源',
-            switchToDark: 'ダークモードに切り替え',
-            switchToLight: 'ライトモードに切り替え',
             payMethodTabs: '支払い方法',
-            languageMenu: '言語',
             copyAddressFailed: 'コピーできませんでした',
             addressCopied: 'アドレスをコピーしました！',
             copyCryptoAddress: 'アドレスをコピー',
@@ -188,10 +165,7 @@
             fundContentDesc: '튜토리얼, 글, 오픈소스 프로젝트',
             fundCoffee: '커피 충전',
             fundCoffeeDesc: '밤새 코딩하는 에너지원',
-            switchToDark: '다크 모드로 전환',
-            switchToLight: '라이트 모드로 전환',
             payMethodTabs: '결제 수단',
-            languageMenu: '언어',
             copyAddressFailed: '복사할 수 없습니다',
             addressCopied: '주소가 복사되었습니다!',
             copyCryptoAddress: '주소 복사',
@@ -219,13 +193,11 @@
             fundContentDesc: 'Tutoriels, articles et open source',
             fundCoffee: 'Café et énergie',
             fundCoffeeDesc: 'Carburant pour coder tard le soir',
-            switchToDark: 'Passer en mode sombre',
-            switchToLight: 'Passer en mode clair',
             payMethodTabs: 'Moyens de paiement',
-            languageMenu: 'Langue',
             copyAddressFailed: 'Impossible de copier l\'adresse',
             addressCopied: 'Adresse copiée !',
-            copyCryptoAddress: 'Copier l\'adresse'
+            copyCryptoAddress: 'Copier l\'adresse',
+            qrAlt: 'Code QR de paiement'
         },
         de: {
             greeting: 'Hallo',
@@ -249,13 +221,11 @@
             fundContentDesc: 'Tutorials, Artikel und Open Source',
             fundCoffee: 'Kaffee & Energie',
             fundCoffeeDesc: 'Treibstoff für nächtliche Coding-Sessions',
-            switchToDark: 'Zum Dunkelmodus wechseln',
-            switchToLight: 'Zum Hellmodus wechseln',
             payMethodTabs: 'Zahlungsmethoden',
-            languageMenu: 'Sprache',
             copyAddressFailed: 'Adresse konnte nicht kopiert werden',
             addressCopied: 'Adresse kopiert!',
-            copyCryptoAddress: 'Adresse kopieren'
+            copyCryptoAddress: 'Adresse kopieren',
+            qrAlt: 'Zahlungs-QR-Code'
         },
         es: {
             greeting: 'Hola',
@@ -279,13 +249,11 @@
             fundContentDesc: 'Tutoriales, artículos y código abierto',
             fundCoffee: 'Café y energía',
             fundCoffeeDesc: 'Combustible para sesiones nocturnas',
-            switchToDark: 'Modo oscuro',
-            switchToLight: 'Modo claro',
             payMethodTabs: 'Métodos de pago',
-            languageMenu: 'Idioma',
             copyAddressFailed: 'No se pudo copiar la dirección',
             addressCopied: '¡Dirección copiada!',
-            copyCryptoAddress: 'Copiar dirección'
+            copyCryptoAddress: 'Copiar dirección',
+            qrAlt: 'Código QR de pago'
         },
         it: {
             greeting: 'Ciao',
@@ -309,13 +277,11 @@
             fundContentDesc: 'Tutorial, articoli e open source',
             fundCoffee: 'Caffè ed energia',
             fundCoffeeDesc: 'Carburante per sessioni notturne',
-            switchToDark: 'Tema scuro',
-            switchToLight: 'Tema chiaro',
             payMethodTabs: 'Metodi di pagamento',
-            languageMenu: 'Lingua',
             copyAddressFailed: 'Impossibile copiare l\'indirizzo',
             addressCopied: 'Indirizzo copiato!',
-            copyCryptoAddress: 'Copia indirizzo'
+            copyCryptoAddress: 'Copia indirizzo',
+            qrAlt: 'Codice QR di pagamento'
         }
     };
 
@@ -326,11 +292,64 @@
     const $ = s => document.querySelector(s);
     const $$ = s => document.querySelectorAll(s);
 
+    function absoluteUrl(url) {
+        if (typeof url !== 'string' || !url) return '';
+        try {
+            return new URL(url, window.location.href).href;
+        } catch {
+            return '';
+        }
+    }
+
+    function imgShowsQrAlready(imgEl, qrUrl) {
+        if (!imgEl || !qrUrl) return false;
+        const want = absoluteUrl(qrUrl);
+        if (!want) return false;
+        const have = imgEl.currentSrc || imgEl.src;
+        if (!have) return false;
+        try {
+            return new URL(have, window.location.href).href === want;
+        } catch {
+            return false;
+        }
+    }
+
     const escapeHtml = str => {
         const div = document.createElement('div');
         div.textContent = str;
         return div.innerHTML;
     };
+
+    const FA_CLASS_PART = /^fa-[a-z0-9-]+$/i;
+    const CRYPTO_ROW_ACCENT = new Set(['btc', 'eth', 'sol', 'usdt', 'trx']);
+
+    function sanitizeFontAwesomeClasses(classString) {
+        if (typeof classString !== 'string') return 'fa-solid fa-link';
+        const parts = classString.trim().split(/\s+/).filter(p => FA_CLASS_PART.test(p));
+        return parts.length ? parts.join(' ') : 'fa-solid fa-link';
+    }
+
+    function sanitizeCryptoRowAccent(raw) {
+        if (typeof raw !== 'string') return '';
+        const t = raw.trim().toLowerCase();
+        return CRYPTO_ROW_ACCENT.has(t) ? t : '';
+    }
+
+    function getSupporterCryptoCodes() {
+        const defaults = [
+            'BTC', 'ETH', 'SOL', 'USDT', 'TRX', 'BNB', 'MATIC', 'POL', 'AVAX', 'DOGE', 'LTC'
+        ];
+        const set = new Set(defaults);
+        const extra = SITE_CONFIG.supporters?.cryptoCurrencyCodes;
+        if (Array.isArray(extra)) {
+            extra.forEach(c => {
+                if (typeof c !== 'string') return;
+                const u = c.trim().toUpperCase();
+                if (u) set.add(u);
+            });
+        }
+        return set;
+    }
 
     const getInitial = name => {
         if (!name) return 'A';
@@ -407,110 +426,55 @@
         });
     }
 
-    function refreshChromeI18n() {
-        updateThemeButton();
+    function refreshUiI18n() {
         const tablist = $('#payTablist');
         if (tablist) tablist.setAttribute('aria-label', getText('payMethodTabs'));
-        const sel = $('#langSelect');
-        if (sel) {
-            sel.setAttribute('aria-label', getText('languageMenu'));
-            if (CONFIG.supportedLangs.includes(currentLang)) sel.value = currentLang;
-        }
         updateCryptoRowsA11y();
-
         const qrImg = $('#qrImage');
         if (qrImg) qrImg.alt = getText('qrAlt');
     }
 
-    function initLanguageSwitcher() {
-        const sel = $('#langSelect');
-        if (!sel || sel.dataset.langInit === '1') return;
-        sel.dataset.langInit = '1';
-        sel.textContent = '';
-        CONFIG.supportedLangs.forEach(code => {
-            const opt = document.createElement('option');
-            opt.value = code;
-            opt.textContent = LANG_LABELS[code] || code;
-            sel.appendChild(opt);
-        });
-        const lang = CONFIG.supportedLangs.includes(currentLang) ? currentLang : CONFIG.defaultLang;
-        sel.value = lang;
-        sel.addEventListener('change', () => {
-            const v = sel.value;
-            if (!CONFIG.supportedLangs.includes(v)) return;
-            localStorage.setItem(CONFIG.langKey, v);
-            applyLanguage(v);
-        });
-    }
-
-    // Theme - Smart auto switching
-    // Priority: 1) User manual choice  2) System prefers-color-scheme  3) Time-based fallback
+    // Theme — follows OS light/dark (prefers-color-scheme). Same pattern as color-scheme-aware OS / PWAs.
+    // Falls back to time-based night when the media query is unavailable (rare).
     const darkMq = window.matchMedia('(prefers-color-scheme: dark)');
 
     function getAutoTheme() {
-        // System preference is supported and has a value
         if (darkMq.media !== 'not all') return darkMq.matches ? 'dark' : 'light';
-        // Fallback: time-based (night = dark)
         const h = new Date().getHours();
         return (h >= CONFIG.nightStart || h < CONFIG.nightEnd) ? 'dark' : 'light';
     }
 
-    function applyTheme(theme) {
-        document.documentElement.dataset.theme = theme;
-        // Update meta theme-color for mobile browser chrome
+    function applyTheme(theme, animate) {
+        const root = document.documentElement;
+        if (animate) {
+            root.classList.add('theme-transitioning');
+            setTimeout(() => root.classList.remove('theme-transitioning'), 500);
+        }
+        root.dataset.theme = theme;
         let meta = document.querySelector('meta[name="theme-color"]');
-        if (!meta) { meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
+        if (!meta) {
+            meta = document.createElement('meta');
+            meta.name = 'theme-color';
+            document.head.appendChild(meta);
+        }
         meta.content = theme === 'dark' ? '#0a0a0a' : '#fefefe';
-        updateThemeButton();
     }
 
     function initTheme() {
-        const saved = localStorage.getItem(CONFIG.themeKey);
-        applyTheme(saved || getAutoTheme());
-
-        // React to system preference changes in real-time (only when no manual choice)
+        applyTheme(getAutoTheme(), false);
         darkMq.addEventListener('change', () => {
-            if (!localStorage.getItem(CONFIG.themeKey)) applyTheme(getAutoTheme());
+            applyTheme(getAutoTheme(), true);
         });
     }
 
-    function toggleTheme() {
-        const current = document.documentElement.dataset.theme || getAutoTheme();
-        const next = current === 'dark' ? 'light' : 'dark';
-        // If new theme matches auto, clear manual override; otherwise save it
-        if (next === getAutoTheme()) {
-            localStorage.removeItem(CONFIG.themeKey);
-        } else {
-            localStorage.setItem(CONFIG.themeKey, next);
-        }
-        applyTheme(next);
-    }
-
-    function updateThemeButton() {
-        const btn = $('#themeToggle');
-        if (!btn) return;
-        const icon = btn.querySelector('i');
-        const isDark = (document.documentElement.dataset.theme || getAutoTheme()) === 'dark';
-        if (icon) icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-        btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-        btn.setAttribute('aria-label', isDark ? getText('switchToLight') : getText('switchToDark'));
-    }
-
-    // Language - detect from navigator.languages (full preference list)
+    // Language — first match from navigator.languages (BCP 47 order per MDN). No localStorage: always tracks browser/OS preference list.
     function detectLanguage() {
-        const saved = localStorage.getItem(CONFIG.langKey);
-        if (saved && CONFIG.supportedLangs.includes(saved)) return saved;
-
-        // navigator.languages returns all user-preferred languages in order
-        // e.g. ['zh-TW', 'zh', 'en-US', 'en', 'ja']
         const candidates = navigator.languages || [navigator.language];
 
         for (const lang of candidates) {
-            // Chinese: distinguish zh-TW/zh-HK (Traditional) vs zh-CN/zh (Simplified)
             if (lang.startsWith('zh')) {
                 return /TW|HK|Hant/i.test(lang) ? 'zh-TW' : 'zh-CN';
             }
-            // Exact match first (e.g. 'ja' matches 'ja', 'ko' matches 'ko')
             const prefix = lang.split('-')[0];
             const match = CONFIG.supportedLangs.find(s => s === lang || s.split('-')[0] === prefix);
             if (match) return match;
@@ -536,7 +500,7 @@
 
         document.documentElement.lang = lang;
 
-        refreshChromeI18n();
+        refreshUiI18n();
     }
 
     // Render Social Links from config
@@ -556,7 +520,7 @@
                 a.target = '_blank';
                 a.rel = 'noopener noreferrer';
             }
-            a.innerHTML = `<i class="${link.icon}" aria-hidden="true"></i>`;
+            a.innerHTML = `<i class="${sanitizeFontAwesomeClasses(link.icon)}" aria-hidden="true"></i>`;
             container.appendChild(a);
         });
     }
@@ -573,7 +537,8 @@
             row.dataset.address = coin.address;
             const labelParts = [coin.name, coin.network].filter(Boolean);
             row.dataset.coinName = labelParts.join(' ');
-            row.dataset.coin = coin.color;
+            const accent = sanitizeCryptoRowAccent(coin.color);
+            if (accent) row.dataset.coin = accent;
             row.setAttribute('role', 'button');
             row.setAttribute('tabindex', '0');
             const ariaExtra = coin.note ? ` — ${coin.note}` : '';
@@ -586,8 +551,9 @@
                 ? `<p class="crypto-hint">${escapeHtml(coin.note)}</p>`
                 : '';
 
+            const iconClasses = sanitizeFontAwesomeClasses(coin.icon);
             row.innerHTML = `
-                <i class="${coin.icon} crypto-icon ${coin.color}" aria-hidden="true"></i>
+                <i class="${iconClasses} crypto-icon${accent ? ` ${accent}` : ''}" aria-hidden="true"></i>
                 <div class="crypto-info">
                     <span class="crypto-name">${nameHtml}</span>
                     <code class="crypto-addr">${escapeHtml(coin.address)}</code>
@@ -620,19 +586,37 @@
             if (!payCfg || !qrStage || !qrFrame || !qrImage || !qrHint) return;
 
             qrStage.dataset.type = id;
+            qrHint.textContent = getText(payCfg.hintKey);
+
+            if (imgShowsQrAlready(qrImage, payCfg.qr)) {
+                qrFrame.classList.remove('loading');
+                qrImage.style.opacity = '1';
+                return;
+            }
 
             qrFrame.classList.add('loading');
             qrImage.style.opacity = '0';
 
             const img = new Image();
-            img.onload = () => {
+            const finishOk = () => {
                 qrImage.src = payCfg.qr;
                 qrImage.style.opacity = '1';
                 qrFrame.classList.remove('loading');
             };
+            img.onload = () => {
+                if (typeof img.decode === 'function') {
+                    img.decode().then(finishOk).catch(finishOk);
+                } else {
+                    finishOk();
+                }
+            };
+            img.onerror = () => {
+                console.error('[donate] QR image failed to load:', payCfg.qr);
+                qrFrame.classList.remove('loading');
+                qrImage.style.opacity = '1';
+                showToast(getText('qrLoadError'));
+            };
             img.src = payCfg.qr;
-
-            qrHint.textContent = getText(payCfg.hintKey);
         };
 
         function setActivePayTab(activeId) {
@@ -652,17 +636,20 @@
             setActivePayTab(id);
             if (id === 'crypto') {
                 qrStage?.classList.add('hidden');
+                qrStage?.setAttribute('aria-hidden', 'true');
                 cryptoStage?.classList.add('visible');
+                cryptoStage?.setAttribute('aria-hidden', 'false');
             } else {
                 updateQr(id);
                 qrStage?.classList.remove('hidden');
+                qrStage?.setAttribute('aria-hidden', 'false');
                 cryptoStage?.classList.remove('visible');
+                cryptoStage?.setAttribute('aria-hidden', 'true');
             }
         }
 
         Object.values(CONFIG.payment).forEach(p => {
-            const img = new Image();
-            img.src = p.qr;
+            new Image().src = p.qr;
         });
 
         payTabs.forEach(tab => {
@@ -763,6 +750,7 @@
         }
 
         const fragment = document.createDocumentFragment();
+        const supporterCryptoCodes = getSupporterCryptoCodes();
 
         stored.forEach((s, index) => {
             const card = document.createElement('article');
@@ -780,8 +768,8 @@
 
             let amountHtml = '';
             if (s.amount && s.currency) {
-                const cryptoCurrencies = ['BTC', 'ETH', 'SOL', 'USDT'];
-                const isCrypto = cryptoCurrencies.includes(s.currency);
+                const cur = String(s.currency).toUpperCase();
+                const isCrypto = supporterCryptoCodes.has(cur);
                 const amountDisplay = isCrypto
                     ? `${s.amount} ${s.currency}`
                     : `${s.currency}${s.amount}`;
@@ -799,6 +787,34 @@
 
         grid.textContent = '';
         grid.appendChild(fragment);
+
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target);
+                });
+            }, { rootMargin: '40px 0px', threshold: 0.1 });
+            grid.querySelectorAll('.supporter-card').forEach(card => io.observe(card));
+        } else {
+            grid.querySelectorAll('.supporter-card').forEach(card => card.classList.add('visible'));
+        }
+    }
+
+    function observeScrollReveal() {
+        if (!('IntersectionObserver' in window)) {
+            $$('.funds-usage, .page-cta, .fund-item').forEach(el => el.classList.add('visible'));
+            return;
+        }
+        const io = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+            });
+        }, { rootMargin: '60px 0px', threshold: 0.1 });
+        $$('.funds-usage, .page-cta, .fund-item').forEach(el => io.observe(el));
     }
 
     // Init
@@ -806,11 +822,10 @@
     initTheme();
 
     function onReady() {
-        $('#themeToggle')?.addEventListener('click', toggleTheme);
-        initLanguageSwitcher();
         applyLanguage(currentLang);
         initHomePage();
         void initSupportersPage();
+        observeScrollReveal();
     }
 
     if (document.readyState === 'loading') {
@@ -818,7 +833,5 @@
     } else {
         onReady();
     }
-
-    // System theme listener is now handled inside initTheme()
 
 })();

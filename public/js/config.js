@@ -52,15 +52,15 @@ window.DONATE_CONFIG = {
     // ========================================
     payment: {
         wechat: {
-            qr: 'https://chilohdata.s3.bitiful.net/wechat.png',
+            qr: 'img/wechat.webp',
             hintKey: 'scanWechat'
         },
         alipay: {
-            qr: 'https://chilohdata.s3.bitiful.net/zfb.png',
+            qr: 'img/alipay.webp',
             hintKey: 'scanAlipay'
         },
         paypal: {
-            qr: 'https://s3.bitiful.net/chilohdata/uPic/paypal.jpg',
+            qr: 'img/paypal.webp',
             hintKey: 'scanPaypal'
         }
     },
@@ -68,53 +68,37 @@ window.DONATE_CONFIG = {
     // ========================================
     // Crypto Addresses
     // ========================================
+    // Four rows cover most donors: on-chain BTC, EVM family (+ ERC/BEP USDT), Tron USDT, Solana (+ SPL USDT same addr).
     crypto: {
         btc: {
             name: 'BTC',
-            network: 'SegWit',
             address: 'bc1qpqchzes0wrhtg5h2rwvh3f6tf5weljetx2adun',
-            note: 'Native SegWit (BIP84 P2WPKH).',
-            icon: 'fa-brands fa-bitcoin',
-            color: 'btc'
-        },
-        btcTaproot: {
-            name: 'BTC',
-            network: 'Taproot',
-            address: 'bc1pa26d29z4y0elcg0s3qraddusd5kuyqkpm3jqyy5ve69sjt07x7fst7dzfm',
-            note: 'Taproot (BIP86 key-path only).',
+            note: 'Bitcoin on-chain (SegWit).',
             icon: 'fa-brands fa-bitcoin',
             color: 'btc'
         },
         eth: {
-            name: 'ETH',
-            network: 'EVM',
+            name: 'EVM',
+            network: '0x',
             address: '0x797A13aB0398eef748cF6D8C518b0803a14918b1',
-            note: 'Same 0x on ETH, BSC, Polygon, Arb, OP, Base, Avalanche C-Chain, etc. USDT ERC-20 / BEP-20 — pick the chain in your wallet.',
+            note: 'Same address on ETH / BSC / Polygon / Arb / OP / Base / Avax C-Chain, etc. Choose network & token (e.g. USDT) in your wallet.',
             icon: 'fa-brands fa-ethereum',
             color: 'eth'
-        },
-        sol: {
-            name: 'SOL',
-            address: 'GXTtMhJvbpmdrqSz5x65Hzd6wia5YYwaHdnxCB3PC1HY',
-            note: 'SLIP-0010 Ed25519; Phantom-compatible. USDT SPL shares this address.',
-            icon: 'fa-solid fa-sun',
-            color: 'sol'
-        },
-        usdtSpl: {
-            name: 'USDT',
-            network: 'SPL',
-            address: 'GXTtMhJvbpmdrqSz5x65Hzd6wia5YYwaHdnxCB3PC1HY',
-            note: 'Solana SPL only — not Tron TRC-20.',
-            icon: 'fa-solid fa-dollar-sign',
-            color: 'usdt'
         },
         usdtTron: {
             name: 'USDT',
             network: 'TRC-20',
             address: 'TQeEKzMRvAUXEU5tsiPR1GX8WUHdhKUhwg',
-            note: 'Tron network only — different chain from Solana / EVM.',
+            note: 'Tron only — not the same as EVM or Solana.',
             icon: 'fa-solid fa-bolt',
             color: 'trx'
+        },
+        sol: {
+            name: 'Solana',
+            address: 'GXTtMhJvbpmdrqSz5x65Hzd6wia5YYwaHdnxCB3PC1HY',
+            note: 'SOL & USDT SPL use this address (Phantom / Solana wallets).',
+            icon: 'fa-solid fa-sun',
+            color: 'sol'
         }
     },
 
@@ -122,20 +106,18 @@ window.DONATE_CONFIG = {
     // Theme Settings
     // ========================================
     theme: {
-        // Night mode time range (24-hour format)
-        nightStart: 18,  // 6 PM
-        nightEnd: 6,     // 6 AM
-        // Storage key for theme preference
-        storageKey: 'donate_theme'
+        // Used when prefers-color-scheme is unavailable: treat as night (dark) between these hours
+        nightStart: 18,
+        nightEnd: 6
     },
 
     // ========================================
     // Language Settings
     // ========================================
     language: {
+        // Fallback if no navigator.languages entry matches. UI language follows browser list only (no manual picker).
         default: 'en',
-        supported: ['en', 'zh-CN', 'zh-TW', 'ja', 'ko', 'fr', 'de', 'es', 'it'],
-        storageKey: 'donate_lang'
+        supported: ['en', 'zh-CN', 'zh-TW', 'ja', 'ko', 'fr', 'de', 'es', 'it']
     },
 
     // ========================================
@@ -143,7 +125,9 @@ window.DONATE_CONFIG = {
     // ========================================
     supporters: {
         // Relative to the HTML page URL (same directory by default)
-        dataUrl: 'supporters.json'
+        dataUrl: 'supporters.json',
+        // Optional: extra currency codes treated as crypto on the supporters wall (uppercase), e.g. ['WBTC']
+        cryptoCurrencyCodes: []
     },
 
     // ========================================
@@ -178,6 +162,8 @@ window.DONATE_CONFIG = {
         twImg.name = 'twitter:image';
         twImg.content = site.ogImage;
         document.head.appendChild(twImg);
+        const twCard = document.querySelector('meta[name="twitter:card"]');
+        if (twCard) twCard.setAttribute('content', 'summary_large_image');
     }
 
     if (typeof location === 'undefined' || !location.pathname) return;
@@ -190,4 +176,5 @@ window.DONATE_CONFIG = {
         document.head.appendChild(link);
     }
 })();
+
 

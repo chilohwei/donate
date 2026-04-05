@@ -2,31 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Support Chiloh's creative work. Donate via WeChat, Alipay, PayPal, or Crypto (BTC, ETH, SOL, USDT).">
-    <meta name="keywords" content="donate, support, sponsor, creator, WeChat, Alipay, PayPal, Bitcoin, Ethereum, crypto donation">
+    <meta name="description" content="Support Chiloh's creative work. Donate via WeChat, Alipay, PayPal, or crypto: Bitcoin (SegWit), EVM (0x networks), USDT (TRC-20), Solana.">
+    <meta name="keywords" content="donate, support, sponsor, creator, WeChat, Alipay, PayPal, Bitcoin, crypto, USDT, Tron, Solana, EVM">
     <meta name="author" content="Chiloh">
     <meta property="og:title" content="Support Chiloh | Buy Me a Coffee ☕">
-    <meta property="og:description" content="Support my creative work with a donation. Every contribution helps fuel my journey.">
+    <meta property="og:description" content="Donate via WeChat, Alipay, PayPal, or crypto (BTC, EVM 0x, USDT TRC-20, Solana). Thank you for your support.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Support Chiloh | Buy Me a Coffee ☕">
-    <meta name="twitter:description" content="Support my creative work with a donation.">
+    <meta name="twitter:description" content="Donate via WeChat, Alipay, PayPal, or crypto (BTC, EVM 0x, USDT TRC-20, Solana). Thank you for your support.">
     <title>Support Chiloh | Buy Me a Coffee ☕</title>
 
-    <script src="js/config.js?v=1.0.1"></script>
+    <script src="js/config.js?v=1.0.2"></script>
+    <script src="js/theme-boot.js?v=1.0.2"></script>
 
+    <link rel="prefetch" href="supporters.html" as="document">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/fontawesome.min.css" rel="stylesheet" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/solid.min.css" rel="stylesheet" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/regular.min.css" rel="stylesheet" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/brands.min.css" rel="stylesheet" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet">
+    </noscript>
 
-    <link rel="stylesheet" href="css/style.css?v=1.0.1">
+    <link rel="stylesheet" href="css/style.css?v=1.0.2">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💝</text></svg>">
 </head>
 <body>
@@ -37,16 +41,6 @@
         <div class="bg-glow glow-2"></div>
         <div class="bg-glow glow-3"></div>
         <div class="bg-grid"></div>
-    </div>
-
-    <div class="chrome-controls" id="chromeControls">
-        <div class="lang-switch">
-            <label class="visually-hidden" for="langSelect" data-i18n="languageMenu">Language</label>
-            <select id="langSelect" class="lang-select" aria-label="Language"></select>
-        </div>
-        <button type="button" class="theme-toggle-fixed" id="themeToggle" aria-pressed="false" aria-label="Theme">
-            <i class="fa-solid fa-sun" aria-hidden="true"></i>
-        </button>
     </div>
 
     <!-- 主布局 -->
@@ -94,12 +88,12 @@
                 <div class="pay-content" id="payment-panel" role="tabpanel" aria-labelledby="pay-tab-wechat">
                     <div class="qr-stage" id="qrStage">
                         <div class="qr-frame">
-                            <img src="https://chilohdata.s3.bitiful.net/wechat.png" alt="" id="qrImage" width="212" height="212" decoding="async">
+                            <img src="img/wechat.webp" alt="" id="qrImage" width="212" height="212" decoding="async" fetchpriority="high">
                         </div>
                         <p class="qr-hint" id="qrHint" data-i18n="scanWechat">Scan with WeChat</p>
                     </div>
 
-                    <div class="crypto-stage" id="cryptoStage">
+                    <div class="crypto-stage" id="cryptoStage" aria-hidden="true">
                     </div>
                 </div>
             </div>
@@ -109,9 +103,10 @@
 
     <noscript>
         <p style="text-align:center;padding:60px 24px;font-family:sans-serif;color:#71717a;">
-            This page requires JavaScript to display payment methods and supporters.
+            This page requires JavaScript to display payment methods and supporters.<br>
+            本页需要启用 JavaScript 以显示支付方式与支持者列表。
         </p>
     </noscript>
-    <script src="js/app.js?v=1.0.1"></script>
+    <script src="js/app.js?v=1.0.2"></script>
 </body>
 </html>

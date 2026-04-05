@@ -1,6 +1,6 @@
 # Donate Page
 
-![Version](https://img.shields.io/badge/version-1.0.1-22c55e?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.0.2-22c55e?style=flat-square)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -20,7 +20,7 @@ A beautiful, modern donation page with multiple payment methods and a supporters
   - WeChat Pay (QR Code)
   - Alipay (QR Code)
   - PayPal (QR Code)
-  - Crypto: BTC, ETH, SOL, USDT (TRC-20)
+  - Crypto: Bitcoin (SegWit), EVM (0x address / multi-chain), USDT (TRC-20), Solana (+ SPL USDT)
 
 - **Supporters Wall**
   - Badge-style compact cards
@@ -28,14 +28,13 @@ A beautiful, modern donation page with multiple payment methods and a supporters
   - Animated entry effects
 
 - **Modern UI/UX**
-  - Light & Dark mode (auto-switches at night)
+  - Light & dark follow **`prefers-color-scheme`** (OS/browser setting); optional time-based fallback when unsupported
   - Smooth animations & transitions
   - Fully responsive design
 
 - **Internationalization (i18n)**
-  - English, Simplified Chinese, Traditional Chinese
-  - Japanese, Korean
-  - French, German, Spanish, Italian
+  - Language follows **`navigator.languages`** (first supported locale; zh split to `zh-CN` / `zh-TW` by script hint)
+  - English, Simplified Chinese, Traditional Chinese, Japanese, Korean, French, German, Spanish, Italian
 
 ## Tech Stack
 
@@ -56,7 +55,7 @@ donate/
 │   ├── supporters.html
 │   ├── supporters.json
 │   ├── css/style.css
-│   └── js/config.js, app.js
+│   └── js/config.js, theme-boot.js, app.js
 ├── supporters.example.json
 ├── VERSION                     # SemVer (bump + sync HTML ?v= query + badge when releasing)
 ├── CHANGELOG.md
@@ -132,9 +131,10 @@ window.DONATE_CONFIG = {
         // ...
     },
     
-    // Optional: override data URL (default supporters.json next to the HTML files)
+    // Optional: supporters.json URL and extra crypto ticker codes for wall styling
     supporters: {
-        dataUrl: 'supporters.json'
+        dataUrl: 'supporters.json',
+        cryptoCurrencyCodes: []
     }
 };
 ```
@@ -145,7 +145,7 @@ Edit **`public/supporters.json`** after you confirm a payment (see **`supporters
 |-------|----------|--------|
 | `name` | yes | Display name; use `"Anonymous"` if needed |
 | `amount` | no | String, e.g. `"88.00"` |
-| `currency` | no | Fiat prefix: `"$"`, `"¥"`, `"€"` or crypto: `"BTC"`, `"ETH"`, `"SOL"`, `"USDT"` |
+| `currency` | no | Fiat prefix: `"$"`, `"¥"`, `"€"` or crypto codes: `"BTC"`, `"ETH"`, `"SOL"`, `"USDT"`, `"TRX"`, etc. (see `supporters.cryptoCurrencyCodes` in config for extras) |
 | `colorIdx` | no | `0`–`9` for avatar gradient (see `avatarColors` in config) |
 | `avatar` | no | Image URL for photo avatar |
 
