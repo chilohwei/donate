@@ -12,10 +12,10 @@ venv/
 # Build
 dist/
 build/
+screenshots/
 
 # Logs
 *.log
 
 # Local config (if any sensitive data)
 # config.local.js
-

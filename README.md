@@ -1,6 +1,6 @@
 # Donate Page
 
-![Version](https://img.shields.io/badge/version-1.0.3-22c55e?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.0.4-22c55e?style=flat-square)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -76,9 +76,9 @@ cd donate
 
 2. Start a local server:
 ```bash
-python3 -m http.server 8080 -d public
+npm run dev
 # or
-npx serve public
+python3 -m http.server 8080 -d public
 ```
 
 3. Open http://localhost:8080 in your browser.
@@ -87,7 +87,20 @@ npx serve public
 
 Deployment is handled by **Cloudflare Workers Builds** (connected via the Cloudflare dashboard). Pushes to `main` auto-deploy.
 
-GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) runs **validation only**: `supporters.json` schema check + `node --check` on all JS files. Pull requests and pushes to `main` both trigger validation.
+GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) runs **validation only** via `npm run validate`: supporter data schema checks, donation config checks, and `node --check` on all JS files. Pull requests and pushes to `main` both trigger validation.
+
+Run the same checks locally:
+
+```bash
+npm run validate
+```
+
+Optional visual smoke checks use Playwright and write screenshots to `screenshots/`:
+
+```bash
+npm install
+npm run test:visual
+```
 
 ## Configuration
 
@@ -107,7 +120,7 @@ window.DONATE_CONFIG = {
     // Social links
     social: {
         blog: { url: 'https://your-blog.com', ... },
-        twitter: { url: 'https://x.com/your_handle', ... },
+        x: { url: 'https://x.com/your_handle', ... },
         // ...
     },
     
@@ -161,6 +174,14 @@ Omit `amount` / `currency` to show name only.
 | Safari | Latest |
 | Edge | Latest |
 
+## Release Checklist
+
+1. Update `VERSION`, `package.json`, cache-busting `?v=` query strings in HTML, and the README version badge.
+2. Update `CHANGELOG.md` with user-facing changes.
+3. Run `npm run validate`.
+4. Run `npm run test:visual` and review the screenshots in `screenshots/`.
+5. Commit the release changes, tag the version, and push to `main` so Cloudflare Workers Builds can deploy.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -170,5 +191,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Chiloh** - [@chilohwei](https://github.com/chilohwei)
 
 - Blog: [blog.chiloh.com](https://blog.chiloh.com)
-- Twitter: [@chiloh_wei](https://x.com/chiloh_wei)
-
+- X: [@chilohwei](https://x.com/chilohwei)

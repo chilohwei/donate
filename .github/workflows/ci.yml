@@ -11,10 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Validate supporters.json
-        run: python3 -m json.tool public/supporters.json > /dev/null
-      - name: Syntax-check JavaScript
-        run: |
-          node --check public/js/config.js
-          node --check public/js/theme-boot.js
-          node --check public/js/app.js
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Validate project
+        run: npm run validate

@@ -313,6 +313,7 @@ body {
     box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
 }
 
+.social-link[data-brand="x"]:hover,
 .social-link[data-brand="twitter"]:hover {
     background: #000;
     border-color: #000;

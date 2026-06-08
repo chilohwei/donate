@@ -1,0 +1,14 @@
+{
+  "name": "donate",
+  "version": "1.0.4",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve public",
+    "validate": "node scripts/validate.mjs",
+    "test:visual": "node scripts/visual-smoke.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.0"
+  }
+}

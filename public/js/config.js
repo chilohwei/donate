@@ -30,9 +30,9 @@ window.DONATE_CONFIG = {
             label: 'Blog',
             icon: 'fa-solid fa-blog'
         },
-        twitter: {
-            url: 'https://x.com/chiloh_wei',
-            label: 'Twitter',
+        x: {
+            url: 'https://x.com/chilohwei',
+            label: 'X',
             icon: 'fa-brands fa-x-twitter'
         },
         github: {
@@ -174,7 +174,10 @@ window.DONATE_CONFIG = {
         link.rel = 'canonical';
         link.href = canonical;
         document.head.appendChild(link);
+
+        const ogUrl = document.createElement('meta');
+        ogUrl.setAttribute('property', 'og:url');
+        ogUrl.setAttribute('content', canonical);
+        document.head.appendChild(ogUrl);
     }
 })();
-
-

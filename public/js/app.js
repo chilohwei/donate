@@ -16,8 +16,8 @@
         crypto: SITE_CONFIG.crypto || {},
         supportedLangs: SITE_CONFIG.language?.supported || ['en'],
         defaultLang: SITE_CONFIG.language?.default || 'en',
-        nightStart: SITE_CONFIG.theme?.nightStart || 18,
-        nightEnd: SITE_CONFIG.theme?.nightEnd || 6
+        nightStart: SITE_CONFIG.theme?.nightStart ?? 18,
+        nightEnd: SITE_CONFIG.theme?.nightEnd ?? 6
     };
 
     // Avatar Color Palettes
@@ -335,6 +335,14 @@
         return CRYPTO_ROW_ACCENT.has(t) ? t : '';
     }
 
+    function normalizeSocialEntries(social) {
+        if (!social || typeof social !== 'object') return [];
+        return Object.entries(social).map(([key, link]) => {
+            const brand = key === 'twitter' ? 'x' : key;
+            return [brand, link];
+        });
+    }
+
     function getSupporterCryptoCodes() {
         const defaults = [
             'BTC', 'ETH', 'SOL', 'USDT', 'TRX', 'BNB', 'MATIC', 'POL', 'AVAX', 'DOGE', 'LTC'
@@ -349,6 +357,16 @@
             });
         }
         return set;
+    }
+
+    function getAvatarColorPair(colorIdx, fallbackIndex) {
+        if (!Array.isArray(AVATAR_COLORS) || AVATAR_COLORS.length === 0) {
+            return ['#f97316', '#ea580c'];
+        }
+        if (Number.isInteger(colorIdx) && AVATAR_COLORS[colorIdx]) {
+            return AVATAR_COLORS[colorIdx];
+        }
+        return AVATAR_COLORS[fallbackIndex % AVATAR_COLORS.length] || AVATAR_COLORS[0];
     }
 
     const getInitial = name => {
@@ -431,7 +449,7 @@
         if (tablist) tablist.setAttribute('aria-label', getText('payMethodTabs'));
         updateCryptoRowsA11y();
         const qrImg = $('#qrImage');
-        if (qrImg) qrImg.alt = getText('qrAlt');
+        if (qrImg && !qrImg.dataset.currentHintKey) qrImg.alt = getText('qrAlt');
     }
 
     // Theme — follows OS light/dark (prefers-color-scheme). Same pattern as color-scheme-aware OS / PWAs.
@@ -462,9 +480,12 @@
 
     function initTheme() {
         applyTheme(getAutoTheme(), false);
-        darkMq.addEventListener('change', () => {
-            applyTheme(getAutoTheme(), true);
-        });
+        const onThemeChange = () => applyTheme(getAutoTheme(), !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+        if (typeof darkMq.addEventListener === 'function') {
+            darkMq.addEventListener('change', onThemeChange);
+        } else if (typeof darkMq.addListener === 'function') {
+            darkMq.addListener(onThemeChange);
+        }
     }
 
     // Language — first match from navigator.languages (BCP 47 order per MDN). No localStorage: always tracks browser/OS preference list.
@@ -509,7 +530,8 @@
         if (!container || !SITE_CONFIG.social) return;
         
         container.innerHTML = '';
-        Object.entries(SITE_CONFIG.social).forEach(([key, link]) => {
+        normalizeSocialEntries(SITE_CONFIG.social).forEach(([key, link]) => {
+            if (!link || typeof link !== 'object' || typeof link.url !== 'string') return;
             const a = document.createElement('a');
             a.href = link.url;
             a.className = 'social-link';
@@ -586,7 +608,11 @@
             if (!payCfg || !qrStage || !qrFrame || !qrImage || !qrHint) return;
 
             qrStage.dataset.type = id;
-            qrHint.textContent = getText(payCfg.hintKey);
+            const hintText = getText(payCfg.hintKey);
+            qrHint.textContent = hintText;
+            qrImage.dataset.currentHintKey = payCfg.hintKey;
+            qrImage.alt = `${hintText} - ${getText('qrAlt')}`;
+            qrStage.setAttribute('aria-label', hintText);
 
             if (imgShowsQrAlready(qrImage, payCfg.qr)) {
                 qrFrame.classList.remove('loading');
@@ -757,22 +783,23 @@
             card.className = 'supporter-card';
 
             const displayName = s.name.trim();
-            const colorIdx = s.colorIdx !== undefined ? s.colorIdx : (index % AVATAR_COLORS.length);
-            const colors = AVATAR_COLORS[colorIdx];
+            const colors = getAvatarColorPair(s.colorIdx, index);
             const avatarStyle = `--avatar-bg: linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
 
             const avatarUrl = sanitizeSupporterAvatarUrl(s.avatar);
             const avatarHtml = avatarUrl
-                ? `<div class="supporter-avatar"><img src="${escapeHtml(avatarUrl)}" alt="${escapeHtml(displayName)}" width="32" height="32" loading="lazy"></div>`
-                : `<div class="supporter-avatar" style="${avatarStyle}">${escapeHtml(getInitial(displayName))}</div>`;
+                ? `<div class="supporter-avatar" aria-hidden="true"><img src="${escapeHtml(avatarUrl)}" alt="" width="32" height="32" loading="lazy"></div>`
+                : `<div class="supporter-avatar" style="${avatarStyle}" aria-hidden="true">${escapeHtml(getInitial(displayName))}</div>`;
 
             let amountHtml = '';
+            let amountLabel = '';
             if (s.amount && s.currency) {
                 const cur = String(s.currency).toUpperCase();
                 const isCrypto = supporterCryptoCodes.has(cur);
                 const amountDisplay = isCrypto
                     ? `${s.amount} ${s.currency}`
                     : `${s.currency}${s.amount}`;
+                amountLabel = amountDisplay;
                 const cryptoClass = isCrypto ? ' crypto' : '';
                 amountHtml = `<span class="supporter-amount${cryptoClass}">${escapeHtml(amountDisplay)}</span>`;
             }
@@ -782,6 +809,7 @@
                 <span class="supporter-name">${escapeHtml(displayName)}</span>
                 ${amountHtml}
             `;
+            card.setAttribute('aria-label', amountLabel ? `${displayName} ${amountLabel}` : displayName);
             fragment.appendChild(card);
         });
 

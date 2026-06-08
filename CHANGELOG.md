@@ -5,6 +5,31 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2026-06-08
+
+### Added
+
+- `npm run dev`, `npm run validate`, and `npm run test:visual` scripts with locked development dependencies.
+- Project validation for donation config, supporter records, local asset paths, theme hours, and version consistency.
+- Playwright visual smoke checks for desktop/mobile home, crypto, and supporters views.
+- Release checklist in README.
+
+### Changed
+
+- X social config now uses `social.x` and `https://x.com/chilohwei`, with runtime fallback for legacy `social.twitter`.
+- CI now runs the shared `npm run validate` entrypoint.
+- Initial WeChat QR is preloaded for faster first paint.
+- Supporters navigation stays in the current tab.
+- QR image alt text now follows the active payment method.
+- Supporter cards have clearer accessible labels and avoid duplicate avatar announcements.
+- Pages now use `strict-origin-when-cross-origin` referrer policy.
+
+### Fixed
+
+- Invalid supporter `colorIdx` values no longer break rendering.
+- `theme.nightStart` and `theme.nightEnd` correctly preserve valid `0` values.
+- Canonical URL injection also adds `og:url`.
+
 ## [1.0.3] - 2026-04-05
 
 ### Changed
@@ -89,6 +114,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Unused modal / form / legacy toast CSS.
 
+[1.0.4]: https://github.com/chilohwei/donate/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/chilohwei/donate/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/chilohwei/donate/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/chilohwei/donate/compare/v1.0.0...v1.0.1
